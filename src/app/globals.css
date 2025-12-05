@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -10,6 +10,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* UCSG Custom Colors */
+  --color-ucsg-primary: #b31549;
+  --color-ucsg-secondary: #c2185b;
+  --color-ucsg-dark: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
