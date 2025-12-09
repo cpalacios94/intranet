@@ -3,20 +3,22 @@ import Header from './components/Header'
 import NavBar from './components/NavBar'
 import NewsSection from './components/NewSection'
 import EventsSection from './components/EventSection'
-import { COLORS } from './constants'
-
 function App() {
   return (
-    <div className={`min-h-screen w-screen font-sans ${COLORS.bgGradient}`}>
+    <div className={`min-h-screen w-screen font-sans`}>
       <TopBar />
       <Header />
       <NavBar />
 
       {/* 4. Contenido Principal */}
-      <main className="max-w-screen-2xl mx-auto p-6 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
-        <NewsSection />
-        <EventsSection />
-      </main>
+      <div className="flex flex-col items-start gap-[22px] relative mx-[10%]">
+        <div className="flex items-start gap-[27px] relative self-stretch w-full">
+          <NewsSection />
+          <EventsSection />
+        </div>
+      </div>
+
+      <div className="w-full h-12 bg-ucsg-primary relative top-22" />
     </div>
   )
 }
