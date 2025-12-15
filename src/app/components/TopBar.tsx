@@ -6,6 +6,7 @@ import { EmailIcon } from './icons/EmailIcon'
 import { LanguageIcon } from './icons/LanguageIcon'
 import { GiftIcon } from './icons/GiftIcon'
 import React from 'react'
+import Link from 'next/link'
 
 const TopBar: React.FC = () => {
   return (
@@ -25,7 +26,9 @@ const TopBar: React.FC = () => {
           <div className="inline-flex justify-start items-start gap-8">
             <EmailIcon className="text-white w-8 h-8" />
             <LanguageIcon className="text-white w-8 h-8" />
-            <GiftIcon className="text-white w-8 h-8" />
+            <Link href="/cumpleanios">
+              <GiftIcon className="text-white w-8 h-8" />
+            </Link>
           </div>
         </div>
       </div>

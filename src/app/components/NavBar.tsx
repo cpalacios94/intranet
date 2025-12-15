@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const NavBar: React.FC = () => {
   return (
-    <nav className="bg-black text-white h-20 mx-[10%] relative bottom-20 flex justify-between items-center pl-8">
+    <nav className="bg-black text-white h-20 mx-[10%] relative bottom-12 flex justify-between items-center pl-8">
       <div className="flex items-center flex-1 justify-between pr-8 h-full">
         <Link href="/">
           <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
@@ -32,7 +32,7 @@ const NavBar: React.FC = () => {
         </Link>
       </div>
       <Link
-        href="/acerca"
+        href="/contacto"
         className="bg-ucsg-primary h-full flex items-center px-24 cursor-pointer hover:bg-ucsg-secondary transition-colors"
         style={{ clipPath: 'polygon(30px 0, 100% 0, 100% 100%, 0 100%)' }}
       >

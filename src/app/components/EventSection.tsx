@@ -38,11 +38,11 @@ const events = [
 
 const EventsSection: React.FC = () => {
   return (
-    <div className="flex flex-col w-1/3 items-start gap-[15px] relative">
-      <HeaderTitle />
+    <div className="flex flex-col w-full xl:w-1/3 items-start gap-[15px] relative">
+      <HeaderTitle titleFirstWorld="Últimos" titleSecondWorld="EVENTOS" />
       <div className="relative w-full h-[635px] rounded-[20px] overflow-hidden shadow-[0px_10px_30px_#00000012]">
-        <div className="w-full h-[874px] bg-white rounded-[0px_0px_var(--demo-edublink-co-radius-4)_var(--demo-edublink-co-radius-4)]">
-          <div className="flex mt-[22px] w-auto justify-center h-[603px] mx-[27px] relative flex-col items-start gap-[22px]">
+        <div className="w-full h-full bg-white rounded-[0px_0px_var(--demo-edublink-co-radius-4)_var(--demo-edublink-co-radius-4)]">
+          <div className="flex w-auto justify-center h-full pt-4 mx-[27px] relative flex-col items-start gap-[22px]">
             <div className="flex items-start relative self-stretch w-full flex-[0_0_auto]">
               <div className='relative w-[320.59px] mt-[-0.86px] font-["Poppins"] font-bold text-[#181818] text-xl tracking-[0] leading-[22px]'>
                 Martes, 25 de noviembre
