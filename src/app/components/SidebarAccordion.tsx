@@ -1,12 +1,16 @@
-import { Accordion, AccordionItem } from '@heroui/react'
+import { Accordion, AccordionItem, Selection } from '@heroui/react'
 import { ChevronIcon } from './icons/ChevronIcon'
 import { Unidad } from '../../types/directory'
 
 interface SidebarAccordionProps {
   items: Unidad[]
+  onFilter: (unidad: number, padre: number, hija?: number) => void
 }
 
-export const SidebarAccordion = ({ items }: SidebarAccordionProps) => {
+export const SidebarAccordion = ({
+  items,
+  onFilter
+}: SidebarAccordionProps) => {
   const itemClasses = {
     base: 'w-full',
     title: 'text-neutral-900 text-sm font-normal font-["Poppins"] text-left',
@@ -29,47 +33,78 @@ export const SidebarAccordion = ({ items }: SidebarAccordionProps) => {
     }
   }
 
+  const handleSelectionChange = (keys: Selection, codUnidad: number) => {
+    // keys is a Set of strings/numbers. We only care about the first one for single selection behavior or the most recently selected.
+    // However, HeroUI Selection can be 'all'.
+    if (keys !== 'all') {
+      const selectedKey = Array.from(keys)[0]
+      if (selectedKey) {
+        onFilter(codUnidad, Number(selectedKey))
+      }
+    }
+  }
+
   return (
     <div className="w-full max-w-[350px] flex flex-col gap-4">
-      {items.map((unidad) => (
-        <div key={unidad.codUnidad} className="flex flex-col gap-2">
-          <h3 className="px-4 text-xs font-semibold text-neutral-500 font-['Poppins']">
-            {getCategoryName(unidad.codUnidad)}
-          </h3>
-          <Accordion
-            showDivider={false}
-            className="p-2 flex flex-col gap-1 w-full"
-            itemClasses={itemClasses}
+      <Accordion
+        showDivider={false}
+        className="p-2 flex flex-col gap-1 w-full"
+        itemClasses={itemClasses}
+      >
+        {items.map((unidad) => (
+          <AccordionItem
+            key={unidad.codUnidad}
+            aria-label={getCategoryName(unidad.codUnidad)}
+            title={getCategoryName(unidad.codUnidad)}
+            indicator={({ isOpen }) => (
+              <ChevronIcon className={isOpen ? 'rotate-90' : '-rotate-90'} />
+            )}
           >
-            {unidad.facultades.map((item) => (
-              <AccordionItem
-                key={item.codSubunidadPadre}
-                aria-label={item.subunidadPadre}
-                title={item.subunidadPadre}
-                indicator={({ isOpen }) => (
-                  <ChevronIcon
-                    className={isOpen ? 'rotate-90' : '-rotate-90'}
-                  />
-                )}
-              >
-                <div className="flex gap-1 pl-2">
-                  <div className="w-[18px] shrink-0" />
-                  <div className="flex flex-col gap-2">
-                    {item.subunidadesHijas.map((child) => (
-                      <span
-                        key={child.codSubunidad}
-                        className="text-default-500 hover:text-primary cursor-pointer text-neutral-900 text-sm font-normal font-['Poppins']"
-                      >
-                        {child.subunidad}
-                      </span>
-                    ))}
+            <Accordion
+              showDivider={false}
+              className="p-2 flex flex-col gap-1 w-full pl-4"
+              itemClasses={itemClasses}
+              onSelectionChange={(keys) =>
+                handleSelectionChange(keys, unidad.codUnidad)
+              }
+            >
+              {unidad.facultades.map((item) => (
+                <AccordionItem
+                  key={item.codSubunidadPadre}
+                  aria-label={item.subunidadPadre}
+                  title={item.subunidadPadre}
+                  indicator={({ isOpen }) => (
+                    <ChevronIcon
+                      className={isOpen ? 'rotate-90' : '-rotate-90'}
+                    />
+                  )}
+                >
+                  <div className="flex gap-1 pl-2">
+                    <div className="w-[18px] shrink-0" />
+                    <div className="flex flex-col gap-2">
+                      {item.subunidadesHijas.map((child) => (
+                        <span
+                          key={child.codSubunidad}
+                          className="text-default-500 hover:text-primary cursor-pointer text-neutral-900 text-sm font-normal font-['Poppins']"
+                          onClick={() =>
+                            onFilter(
+                              unidad.codUnidad,
+                              item.codSubunidadPadre,
+                              child.codSubunidad
+                            )
+                          }
+                        >
+                          {child.subunidad}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      ))}
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </AccordionItem>
+        ))}
+      </Accordion>
     </div>
   )
 }

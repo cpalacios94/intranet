@@ -16,15 +16,19 @@ const NavBar: React.FC = () => {
         <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
           SIU 2.0
         </div>
-        <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
-          Servicios en línea administrativos
-        </div>
+        <Link href={process.env.NEXT_PUBLIC_SERVICIOS_ADMIN_URL ?? '#'}>
+          <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
+            Servicios en línea administrativos
+          </div>
+        </Link>
         <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
           Gestor documental
         </div>
-        <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
-          Mesa de ayuda
-        </div>
+        <Link href={process.env.NEXT_PUBLIC_MESA_AYUDA_URL ?? '#'}>
+          <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
+            Mesa de ayuda
+          </div>
+        </Link>
         <Link href="/acerca">
           <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
             Acerca de la UCSG

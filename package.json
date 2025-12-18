@@ -11,6 +11,8 @@
   "dependencies": {
     "@heroui/react": "^2.8.5",
     "@heroui/scroll-shadow": "^2.3.18",
+    "@heroui/spinner": "^2.2.25",
+    "@heroui/theme": "^2.4.24",
     "framer-motion": "^12.23.25",
     "lucide-react": "^0.555.0",
     "next": "16.0.7",

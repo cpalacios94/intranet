@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo, useDeferredValue } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/NavBar'
 import TopBar from '../components/TopBar'
@@ -9,14 +9,56 @@ import { SidebarAccordion } from '../components/SidebarAccordion'
 import ContactCard from '../components/ContactCard'
 import { ScrollShadow } from '@heroui/scroll-shadow'
 import SearchInput from '../components/SearchInput'
-import { Unidad } from '../../types/directory'
+import { Unidad, Contact } from '../../types/directory'
+
+import { filterContacts } from '../actions/contact'
+
+import { Spinner } from '@heroui/react'
 
 interface ContactClientProps {
   directory: Unidad[]
+  contacts: Contact[]
 }
 
-export default function ContactClient({ directory }: ContactClientProps) {
+export default function ContactClient({
+  directory,
+  contacts: initialContacts
+}: ContactClientProps) {
   const [searchQuery, setSearchQuery] = useState('')
+  const [contacts, setContacts] = useState<Contact[]>(initialContacts)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const deferredSearchQuery = useDeferredValue(searchQuery)
+  const isSearching = deferredSearchQuery.trim().length > 0
+
+  const filteredContacts = useMemo(() => {
+    if (!isSearching) return contacts
+
+    const lowerQuery = deferredSearchQuery.toLowerCase()
+    return initialContacts.filter((contact) => {
+      const fullName = `${contact.nombres} ${contact.apellidos}`.toLowerCase()
+      return fullName.includes(lowerQuery)
+    })
+  }, [contacts, initialContacts, isSearching, deferredSearchQuery])
+
+  const handleFilter = async (
+    codUnidad: number,
+    codPadre: number,
+    codHija?: number
+  ) => {
+    setIsLoading(true)
+    try {
+      // Artificial delay to ensure spinner visibility
+      await new Promise((resolve) => setTimeout(resolve, 500))
+
+      const data = await filterContacts(codUnidad, codPadre, codHija)
+      setContacts(data)
+    } catch (error) {
+      console.error('Error filtering contacts:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <div className={`min-h-screen w-screen font-sans`}>
@@ -37,7 +79,7 @@ export default function ContactClient({ directory }: ContactClientProps) {
             <div className="w-full h-full flex bg-white rounded-[0px_0px_var(--demo-edublink-co-radius-4)_var(--demo-edublink-co-radius-4)]">
               <ScrollShadow className="w-full h-full" size={40} hideScrollBar>
                 <div className="py-4 px-2 w-full inline-flex flex-col justify-start items-start gap-5">
-                  <SidebarAccordion items={directory} />
+                  <SidebarAccordion items={directory} onFilter={handleFilter} />
                 </div>
               </ScrollShadow>
             </div>
@@ -49,7 +91,7 @@ export default function ContactClient({ directory }: ContactClientProps) {
               <SearchInput
                 value={searchQuery}
                 onChange={setSearchQuery}
-                className="w-full"
+                className="w-full h-11 px-3 py-2"
               />
             </div>
           </div>
@@ -62,17 +104,22 @@ export default function ContactClient({ directory }: ContactClientProps) {
               >
                 <div className="w-full h-auto relative inline-flex flex-col justify-start items-start gap-5">
                   <div className="self-stretch grid grid-cols-3 gap-7 p-8">
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
+                    {isLoading ? (
+                      <div className="col-span-3 flex justify-center items-center h-64 w-full">
+                        <Spinner
+                          size="lg"
+                          label="Cargando contactos..."
+                          color="danger"
+                          classNames={{
+                            label: "font-['Poppins']"
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      filteredContacts.map((contact, index) => (
+                        <ContactCard key={index} contact={contact} />
+                      ))
+                    )}
                   </div>
                 </div>
               </ScrollShadow>

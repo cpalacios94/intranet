@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 
 const getBirthdays = async (): Promise<Birthday[]> => {
   try {
-    const res = await fetch('http://localhost:8080/api/cumpleanios', {
+    const res = await fetch(`${process.env.API_URL}/api/cumpleanios`, {
       cache: 'no-store' // Ensure fresh data
     })
     if (!res.ok) {
