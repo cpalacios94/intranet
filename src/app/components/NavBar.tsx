@@ -10,13 +10,23 @@ const NavBar: React.FC = () => {
             Inicio
           </div>
         </Link>
-        <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
-          SIU
-        </div>
+        <Link
+          href={process.env.NEXT_PUBLIC_SIU_URL ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
+            SIU
+          </div>
+        </Link>
         <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
           SIU 2.0
         </div>
-        <Link href={process.env.NEXT_PUBLIC_SERVICIOS_ADMIN_URL ?? '#'}>
+        <Link
+          href={process.env.NEXT_PUBLIC_SERVICIOS_ADMIN_URL ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
             Servicios en línea administrativos
           </div>
@@ -24,7 +34,11 @@ const NavBar: React.FC = () => {
         <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
           Gestor documental
         </div>
-        <Link href={process.env.NEXT_PUBLIC_MESA_AYUDA_URL ?? '#'}>
+        <Link
+          href={process.env.NEXT_PUBLIC_MESA_AYUDA_URL ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm xl:text-base font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
             Mesa de ayuda
           </div>

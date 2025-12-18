@@ -61,7 +61,7 @@ const BirthdayMainSection: React.FC<BirthdayMainSectionProps> = ({
               currentMonthIndex={currentMonthIndex}
             />
             <div className="w-full flex justify-start items-start">
-              <div className="self-stretch w-full">
+              <div className="self-stretch w-1/2">
                 <SearchInput
                   value={searchQuery}
                   onChange={setSearchQuery}

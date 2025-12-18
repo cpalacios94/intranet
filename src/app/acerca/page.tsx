@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import HeaderTitle from '../components/HeaderTitle'
 import KeyIcon from '../components/icons/KeyIcon'
+import InstagramFeed from '../components/InstagramFeed'
 import Navbar from '../components/NavBar'
 import TopBar from '../components/TopBar'
 
@@ -30,7 +31,7 @@ export default function AboutPage() {
         </div> */}
 
         <div className="self-stretch inline-flex flex-col justify-start items-start gap-5 h-[635px]">
-          <div className="w-60 h-40 relative rounded-[20px]">
+          <div className="w-60 h-40 relative rounded-[20px] mb-10">
             <div className="w-60 h-40 left-0 top-0 absolute bg-white rounded-[20px] border border-zinc-500/40" />
             <div className="w-10 h-10 left-[26px] top-[26px] absolute bg-[#a90046]/10 rounded-xl flex justify-center items-center">
               <KeyIcon className="w-6 h-6" />
@@ -41,6 +42,11 @@ export default function AboutPage() {
             <div className="w-48 h-8 left-[25.96px] top-[105.93px] absolute justify-start text-zinc-500 text-xs font-normal font-['Poppins'] leading-4">
               Cambia o desbloquee su clavel del SIU
             </div>
+          </div>
+
+          <h1 className="text-4xl font-bold mb-8">Prueba Instagram</h1>
+          <div className="w-full max-w-5xl border rounded-xl overflow-hidden">
+            <InstagramFeed />
           </div>
         </div>
       </div>
