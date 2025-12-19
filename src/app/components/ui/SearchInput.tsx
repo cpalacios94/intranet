@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Input } from '@heroui/react'
-import { SearchIcon } from './icons/SearchIcon'
+import { SearchIcon } from '../icons/SearchIcon'
 
 interface SearchInputProps {
   value: string

@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderTitle from './HeaderTitle'
+import HeaderTitle from '../ui/HeaderTitle'
 import MainNews from './MainNews'
 import GridNews from './GridNews'
 

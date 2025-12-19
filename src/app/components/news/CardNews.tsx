@@ -1,4 +1,5 @@
-import { ContainerIcon } from './icons/ContainerIcon'
+import Image from 'next/image'
+import { ContainerIcon } from '../icons/ContainerIcon'
 
 const CardNews: React.FC = () => {
   return (
@@ -11,10 +12,12 @@ const CardNews: React.FC = () => {
     //     </div>
     // </div>
     <div className="w-96 flex justify-start items-center gap-4 whitespace-break-spaces">
-      <img
+      <Image
         alt="News thumbnail"
-        className="w-28 h-28 rounded-[9.77px]"
-        src="https://placehold.co/105x112"
+        className="rounded-[9.77px] object-cover"
+        src="https://placehold.co/105x112.png"
+        width={112}
+        height={112}
       />
       <div className="w-72 h-24 inline-flex flex-col justify-start items-start gap-2">
         <div className="self-stretch flex flex-col justify-start items-start gap-[2.92px]">

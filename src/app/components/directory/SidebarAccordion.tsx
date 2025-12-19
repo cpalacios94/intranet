@@ -1,6 +1,6 @@
 import { Accordion, AccordionItem, Selection } from '@heroui/react'
-import { ChevronIcon } from './icons/ChevronIcon'
-import { Unidad } from '../../types/directory'
+import { ChevronIcon } from '../icons/ChevronIcon'
+import { Unidad } from '../../../types/directory'
 
 interface SidebarAccordionProps {
   items: Unidad[]

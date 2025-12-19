@@ -3050,3 +3050,5 @@ export const BirthdayBackground = React.memo(() => {
     </div>
   )
 })
+
+BirthdayBackground.displayName = 'BirthdayBackground'

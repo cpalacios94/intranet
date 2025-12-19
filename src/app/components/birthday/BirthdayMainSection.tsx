@@ -1,11 +1,11 @@
 'use client'
 import { useState, useMemo, useDeferredValue } from 'react'
 import BirthdayMonthCarousel from './BirthdayMonthCarousel'
-import SearchInput from './SearchInput'
+import SearchInput from '../ui/SearchInput'
 import BirthdayMainCalendar from './BirthdayMainCalendar'
 import { BirthdayBackground } from './BirthdayBackground'
-import ClientOnly from './ClientOnly'
-import { Birthday } from '../types/birthday'
+import ClientOnly from '../ui/ClientOnly'
+import { Birthday } from '../../types/birthday'
 
 interface BirthdayMainSectionProps {
   birthdays: Birthday[]

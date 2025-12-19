@@ -2,7 +2,7 @@
 import React, { useMemo } from 'react'
 import { ScrollShadow } from '@heroui/scroll-shadow'
 import BirthdayDayCard from './BirthdayDayCard'
-import { Birthday } from '../types/birthday'
+import { Birthday } from '../../types/birthday'
 
 interface BirthdayMainCalendarProps {
   birthdays: Birthday[]
@@ -51,5 +51,7 @@ const BirthdayMainCalendar: React.FC<BirthdayMainCalendarProps> = React.memo(
     )
   }
 )
+
+BirthdayMainCalendar.displayName = 'BirthdayMainCalendar'
 
 export default BirthdayMainCalendar

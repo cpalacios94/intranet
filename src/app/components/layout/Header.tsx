@@ -1,6 +1,6 @@
 import React from 'react'
-import { UcsgIcon } from './icons/UcsgIcon'
-import { IntranetIcon } from './icons/IntranetIcon'
+import { UcsgIcon } from '../icons/UcsgIcon'
+import { IntranetIcon } from '../icons/IntranetIcon'
 
 const Header: React.FC = () => {
   return (

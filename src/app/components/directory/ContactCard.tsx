@@ -1,8 +1,8 @@
-import { PersonIcon } from './icons/PersonIcon'
-import { BadgeIcon } from './icons/BadgeIcon'
-import { CallIcon } from './icons/CallIcon'
-import { MailIcon } from './icons/MailIcon'
-import { Contact } from '../../types/directory'
+import { PersonIcon } from '../icons/PersonIcon'
+import { BadgeIcon } from '../icons/BadgeIcon'
+import { CallIcon } from '../icons/CallIcon'
+import { MailIcon } from '../icons/MailIcon'
+import { Contact } from '../../../types/directory'
 
 interface ContactCardProps {
   contact: Contact

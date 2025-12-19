@@ -1,9 +1,9 @@
-import Header from '../components/Header'
-import HeaderTitle from '../components/HeaderTitle'
+import Header from '../components/layout/Header'
+import HeaderTitle from '../components/ui/HeaderTitle'
 import KeyIcon from '../components/icons/KeyIcon'
-import InstagramFeed from '../components/InstagramFeed'
-import Navbar from '../components/NavBar'
-import TopBar from '../components/TopBar'
+import Navbar from '../components/layout/NavBar'
+import TopBar from '../components/layout/TopBar'
+import InstagramFeed from '../components/social/InstagramFeed'
 
 export default function AboutPage() {
   return (
@@ -30,8 +30,8 @@ export default function AboutPage() {
           </div>
         </div> */}
 
-        <div className="self-stretch inline-flex flex-col justify-start items-start gap-5 h-[635px]">
-          <div className="w-60 h-40 relative rounded-[20px] mb-10">
+        <div className="self-stretch flex flex-col justify-start items-start gap-5 h-full">
+          <div className="w-60 h-40 relative rounded-[20px] mb-10 flex items-center">
             <div className="w-60 h-40 left-0 top-0 absolute bg-white rounded-[20px] border border-zinc-500/40" />
             <div className="w-10 h-10 left-[26px] top-[26px] absolute bg-[#a90046]/10 rounded-xl flex justify-center items-center">
               <KeyIcon className="w-6 h-6" />
@@ -44,9 +44,11 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold mb-8">Prueba Instagram</h1>
-          <div className="w-full max-w-5xl border rounded-xl overflow-hidden">
-            <InstagramFeed />
+          <div className="flex flex-col items-start gap-5 w-full">
+            <h1 className="text-4xl font-bold mb-8">Prueba Instagram</h1>
+            <div className="w-full h-full border rounded-xl">
+              <InstagramFeed />
+            </div>
           </div>
         </div>
       </div>

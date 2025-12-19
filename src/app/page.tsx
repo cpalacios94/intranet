@@ -1,9 +1,9 @@
-import TopBar from './components/TopBar'
-import Header from './components/Header'
-import NavBar from './components/NavBar'
-import NewsSection from './components/NewSection'
-import EventsSection from './components/EventSection'
-import { WaveBackground } from './components/WaveBackground'
+import TopBar from './components/layout/TopBar'
+import Header from './components/layout/Header'
+import NavBar from './components/layout/NavBar'
+import NewsSection from './components/news/NewSection'
+import EventsSection from './components/news/EventSection'
+import { WaveBackground } from './components/layout/WaveBackground'
 
 function App() {
   return (

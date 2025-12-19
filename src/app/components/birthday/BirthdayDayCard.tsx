@@ -1,5 +1,5 @@
 import React from 'react'
-import { Birthday } from '../types/birthday'
+import { Birthday } from '../../types/birthday'
 
 interface BirthdayDayCardProps {
   day: string
@@ -56,5 +56,7 @@ const BirthdayDayCard: React.FC<BirthdayDayCardProps> = React.memo(
     )
   }
 )
+
+BirthdayDayCard.displayName = 'BirthdayDayCard'
 
 export default BirthdayDayCard

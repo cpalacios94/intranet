@@ -1,6 +1,6 @@
-import { ContainerIcon } from './icons/ContainerIcon'
-import { NEWS_ITEMS } from '../constants'
-import { ChevronIcon } from './icons/ChevronIcon'
+import { ContainerIcon } from '../icons/ContainerIcon'
+import { NEWS_ITEMS } from '../../constants'
+import { ChevronIcon } from '../icons/ChevronIcon'
 
 const MainNews: React.FC = () => {
   const featuredNews = NEWS_ITEMS[0]

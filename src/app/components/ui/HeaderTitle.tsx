@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChevronIcon } from './icons/ChevronIcon'
+import { ChevronIcon } from '../icons/ChevronIcon'
 
 interface HeaderTitleProps {
   titleFirstWorld: string

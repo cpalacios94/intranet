@@ -1,7 +1,9 @@
 'use client'
 import React from 'react'
-import HeaderTitle from './HeaderTitle'
-import { ContainerIcon } from './icons/ContainerIcon'
+import Image from 'next/image'
+import HeaderTitle from '../ui/HeaderTitle'
+import ClientOnly from '../ui/ClientOnly'
+import { ContainerIcon } from '../icons/ContainerIcon'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
 
@@ -16,7 +18,7 @@ const events = [
     date: '15 Nov, 2023',
     description:
       'La Carrera de Negocios Internacionales organizó un taller interactivo de inglés y francés dirigido a postulantes, con palabras de bienvenida a cargo de su directora... La Carrera de Negocios Internacionales organizó un taller interactivo de inglés y francés dirigido a postulantes, con palabras de bienvenida a cargo de su directora...La Carrera de Negocios Internacionales...',
-    image: 'https://placehold.co/417x206'
+    image: 'https://placehold.co/417x206.png'
   },
   {
     id: 2,
@@ -24,7 +26,7 @@ const events = [
     date: '20 Nov, 2023',
     description:
       'Expertos en marketing digital comparten las últimas tendencias y estrategias para el éxito en redes sociales y comercio electrónico. Un evento imperdible para estudiantes y profesionales.',
-    image: 'https://placehold.co/417x206'
+    image: 'https://placehold.co/417x206.png'
   },
   {
     id: 3,
@@ -32,7 +34,7 @@ const events = [
     date: '25 Nov, 2023',
     description:
       'Estudiantes presentan sus proyectos innovadores ante un jurado de empresarios e inversores. Descubre el talento y la creatividad de nuestra comunidad universitaria.',
-    image: 'https://placehold.co/417x206'
+    image: 'https://placehold.co/417x206.png'
   }
 ]
 
@@ -124,55 +126,59 @@ const EventsSection: React.FC = () => {
             </div>
 
             <div className="h-full w-full flex flex-col justify-center items-center gap-4 relative">
-              <Swiper
-                modules={[Pagination, Autoplay]}
-                spaceBetween={20}
-                slidesPerView={1}
-                pagination={{ clickable: true }}
-                className="w-full h-full [&_.swiper-pagination-bullet]:bg-zinc-300! [&_.swiper-pagination-bullet]:opacity-100! [&_.swiper-pagination-bullet]:w-3! [&_.swiper-pagination-bullet]:h-3! [&_.swiper-pagination-bullet-active]:bg-rose-700!"
-              >
-                {events.map((event) => (
-                  <SwiperSlide key={event.id}>
-                    <div className="w-full h-full inline-flex flex-col justify-start items-center gap-4">
-                      <img
-                        className="self-stretch h-52 rounded-[9.77px] object-cover"
-                        src={event.image}
-                        alt={event.title}
-                      />
-                      <div className="self-stretch flex flex-col justify-start items-start gap-2">
-                        <div className="self-stretch flex flex-col justify-start items-start gap-[2.92px]">
-                          <div className="self-stretch h-4 flex flex-col justify-start items-start">
-                            <div className="self-stretch inline-flex justify-start items-start">
-                              <div className="w-80 justify-start text-neutral-900 text-sm font-semibold font-['Poppins'] leading-4 truncate">
-                                {event.title}
+              <ClientOnly>
+                <Swiper
+                  modules={[Pagination, Autoplay]}
+                  spaceBetween={20}
+                  slidesPerView={1}
+                  pagination={{ clickable: true }}
+                  className="w-full h-full [&_.swiper-pagination-bullet]:bg-zinc-300! [&_.swiper-pagination-bullet]:opacity-100! [&_.swiper-pagination-bullet]:w-3! [&_.swiper-pagination-bullet]:h-3! [&_.swiper-pagination-bullet-active]:bg-rose-700!"
+                >
+                  {events.map((event) => (
+                    <SwiperSlide key={event.id}>
+                      <div className="w-full h-full inline-flex flex-col justify-start items-center gap-4">
+                        <Image
+                          className="w-full h-52 rounded-[9.77px] object-cover"
+                          src={event.image}
+                          alt={event.title}
+                          width={417}
+                          height={208}
+                        />
+                        <div className="self-stretch flex flex-col justify-start items-start gap-2">
+                          <div className="self-stretch flex flex-col justify-start items-start gap-[2.92px]">
+                            <div className="self-stretch h-4 flex flex-col justify-start items-start">
+                              <div className="self-stretch inline-flex justify-start items-start">
+                                <div className="w-80 justify-start text-neutral-900 text-sm font-semibold font-['Poppins'] leading-4 truncate">
+                                  {event.title}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="self-stretch h-5 inline-flex justify-start items-start flex-wrap content-start">
-                            <div className="w-20 self-stretch py-[2.92px] inline-flex flex-col justify-center items-start">
-                              <div className="h-4 pb-[0.55px] inline-flex justify-start items-center gap-1.5">
-                                <div className="flex justify-start items-start">
-                                  <div className="w-2.5 h-2.5 relative">
-                                    <ContainerIcon className="w-2.5 h-2.5 left-0 top-0 absolute" />
+                            <div className="self-stretch h-5 inline-flex justify-start items-start flex-wrap content-start">
+                              <div className="w-20 self-stretch py-[2.92px] inline-flex flex-col justify-center items-start">
+                                <div className="h-4 pb-[0.55px] inline-flex justify-start items-center gap-1.5">
+                                  <div className="flex justify-start items-start">
+                                    <div className="w-2.5 h-2.5 relative">
+                                      <ContainerIcon className="w-2.5 h-2.5 left-0 top-0 absolute" />
+                                    </div>
+                                  </div>
+                                  <div className="max-h-4 justify-start text-neutral-900 text-[8.76px] font-normal font-['Poppins'] leading-4">
+                                    {event.date}
                                   </div>
                                 </div>
-                                <div className="max-h-4 justify-start text-neutral-900 text-[8.76px] font-normal font-['Poppins'] leading-4">
-                                  {event.date}
-                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="self-stretch h-full flex flex-col justify-start items-start">
-                          <div className="self-stretch justify-start text-zinc-500 text-xs font-normal font-['Poppins'] leading-4">
-                            {event.description}
+                          <div className="self-stretch h-full flex flex-col justify-start items-start">
+                            <div className="self-stretch justify-start text-zinc-500 text-xs font-normal font-['Poppins'] leading-4">
+                              {event.description}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </ClientOnly>
             </div>
             {/* <FrameWrapper />
             <DivWrapper />
