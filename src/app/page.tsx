@@ -7,7 +7,7 @@ import { WaveBackground } from './components/layout/WaveBackground'
 
 function App() {
   return (
-    <div className={`min-h-screen w-screen font-sans relative flex flex-col`}>
+    <div className="min-h-screen w-screen font-sans relative flex flex-col z-0">
       <WaveBackground />
       <TopBar />
       <Header />

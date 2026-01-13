@@ -5,12 +5,14 @@ interface HeaderTitleProps {
   titleFirstWorld: string
   titleSecondWorld: string
   viewAll?: boolean
+  link?: string
 }
 
 const HeaderTitle: React.FC<HeaderTitleProps> = ({
   titleFirstWorld,
   titleSecondWorld,
-  viewAll = true
+  viewAll = true,
+  link
 }) => {
   return (
     <div className="flex items-center w-full justify-between relative">
@@ -40,9 +42,15 @@ const HeaderTitle: React.FC<HeaderTitleProps> = ({
       {viewAll && (
         <div className="flex w-[99px] h-[26px] items-center gap-[12.79px] relative cursor-pointer hover:opacity-80 transition-opacity">
           <div className="inline-flex items-start relative flex-[0_0_auto]">
-            <div className="relative w-fit mt-[-0.99px] font-['Poppins'] font-medium text-[#a90046] text-[12.5px] tracking-[0] leading-[25.6px] whitespace-nowrap overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:0] [-webkit-box-orient:vertical]">
+            {/* <div className="relative w-fit mt-[-0.99px] font-['Poppins'] font-medium text-[#a90046] text-[12.5px] tracking-[0] leading-[25.6px] whitespace-nowrap overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:0] [-webkit-box-orient:vertical]">
               Ver todas
-            </div>
+            </div> */}
+            <a
+              href={link}
+              className="text-ucsg-secondary text-sm font-medium whitespace-nowrap font-['Poppins'] hover:underline flex items-center"
+            >
+              Ver todas{' '}
+            </a>
           </div>
 
           <ChevronIcon className="relative w-[17.05px] h-[17.05px] aspect-[1]" />

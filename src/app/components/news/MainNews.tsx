@@ -1,16 +1,26 @@
 import { ContainerIcon } from '../icons/ContainerIcon'
-import { NEWS_ITEMS } from '../../constants'
+import { MOCK_NEWS } from '../../constants'
 import { ChevronIcon } from '../icons/ChevronIcon'
+import Link from 'next/link'
 
 const MainNews: React.FC = () => {
-  const featuredNews = NEWS_ITEMS[0]
+  const featuredNews = MOCK_NEWS[0]
   console.log(featuredNews.image)
   if (!featuredNews) return null
   return (
-    <div className="flex h-[300px] items-center gap-[25px] relative">
+    <Link
+      href={`/noticias/${featuredNews.slug}`}
+      className="flex h-[300px] items-center gap-[25px] relative group cursor-pointer"
+    >
       <div
         className="relative flex-1 grow h-[300px] rounded-[7.1px] bg-cover bg-position-[50%_50%]"
-        style={{ backgroundImage: `url(${featuredNews.image})` }}
+        style={{
+          backgroundImage: `url(${
+            typeof featuredNews.image === 'string'
+              ? featuredNews.image
+              : featuredNews.image.src
+          })`
+        }}
       />
 
       <div className="gap-[10.66px] flex-1 grow flex flex-col items-start relative">
@@ -25,7 +35,7 @@ const MainNews: React.FC = () => {
         <div className="gap-[3.55px] self-stretch w-full flex-[0_0_auto] flex flex-col items-start relative">
           <div className="flex flex-col h-[27.71px] items-start relative self-stretch w-full">
             <div className="flex self-stretch w-full items-start relative flex-[0_0_auto]">
-              <p className="relative w-[390.77px] mt-[-1.05px] font-['Poppins'] font-semibold text-[#181818] text-base tracking-[0] leading-5">
+              <p className="relative w-[390.77px] mt-[-1.05px] font-['Poppins'] font-semibold text-[#181818] text-base tracking-[0] leading-5 group-hover:text-rose-800 transition-colors">
                 Taller interactivo de Inglés y Francés
               </p>
             </div>
@@ -77,7 +87,7 @@ const MainNews: React.FC = () => {
           <ChevronIcon className="relative w-[17.05px] h-[17.05px] aspect-[1]" />
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

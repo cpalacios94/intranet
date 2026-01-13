@@ -1,5 +1,12 @@
 @import 'tailwindcss';
 
+@plugin '../../hero.ts';
+
+/* Note: You may need to change the path to fit your project structure */
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+
+@custom-variant dark (&:is(.dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -15,14 +22,15 @@
   --color-ucsg-primary: #b31549;
   --color-ucsg-secondary: #c2185b;
   --color-ucsg-dark: #1a1a1a;
+  --color-ucsg-cuarto: #efdfe4;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);

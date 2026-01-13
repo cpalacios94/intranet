@@ -41,7 +41,11 @@ const events = [
 const EventsSection: React.FC = () => {
   return (
     <div className="flex flex-col w-full xl:w-1/3 items-start gap-[15px] relative">
-      <HeaderTitle titleFirstWorld="Últimos" titleSecondWorld="EVENTOS" />
+      <HeaderTitle
+        titleFirstWorld="Últimos"
+        titleSecondWorld="EVENTOS"
+        link="/eventos"
+      />
       <div className="relative w-full h-[635px] rounded-[20px] overflow-hidden shadow-[0px_10px_30px_#00000012]">
         <div className="w-full h-full bg-white rounded-[0px_0px_var(--demo-edublink-co-radius-4)_var(--demo-edublink-co-radius-4)]">
           <div className="flex w-auto justify-center h-full pt-4 mx-[27px] relative flex-col items-start gap-[22px]">

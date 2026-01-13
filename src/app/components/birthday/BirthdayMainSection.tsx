@@ -1,6 +1,6 @@
 'use client'
 import { useState, useMemo, useDeferredValue } from 'react'
-import BirthdayMonthCarousel from './BirthdayMonthCarousel'
+import MonthCarousel from '../shared/MonthCarousel'
 import SearchInput from '../ui/SearchInput'
 import BirthdayMainCalendar from './BirthdayMainCalendar'
 import { BirthdayBackground } from './BirthdayBackground'
@@ -54,18 +54,18 @@ const BirthdayMainSection: React.FC<BirthdayMainSectionProps> = ({
           <BirthdayBackground />
         </ClientOnly>
         <div className="w-full h-full flex rounded-[0px_0px_var(--demo-edublink-co-radius-4)_var(--demo-edublink-co-radius-4)]">
-          <div className="mt-[22.3px] w-full h-auto mx-4 flex-col items-start gap-7 flex relative">
-            <BirthdayMonthCarousel
+          <div className="mt-[22.3px] w-full h-auto px-4 flex-col items-start gap-7 flex relative">
+            <MonthCarousel
               selectedMonth={selectedMonth}
               onMonthSelect={handleMonthSelect}
               currentMonthIndex={currentMonthIndex}
             />
             <div className="w-full flex justify-start items-start">
-              <div className="self-stretch w-1/2">
+              <div className="h-full w-1/2">
                 <SearchInput
                   value={searchQuery}
                   onChange={setSearchQuery}
-                  className="w-full h-11 px-3 py-2"
+                  className="w-full h-full px-3"
                 />
               </div>
             </div>

@@ -1,19 +1,19 @@
 import React from 'react'
 
-interface BirthdayMonthCardProps {
+interface MonthCardProps {
   month: string
   isActive?: boolean
   onClick?: () => void
 }
 
-const BirthdayMonthCard: React.FC<BirthdayMonthCardProps> = ({
+const MonthCard: React.FC<MonthCardProps> = ({
   month,
   isActive = false,
   onClick
 }) => {
   return (
     <div
-      className="w-32 h-24 relative flex flex-col items-center gap-4 cursor-pointer"
+      className="w-full relative flex flex-col items-center gap-4 cursor-pointer"
       onClick={onClick}
     >
       <div
@@ -41,4 +41,4 @@ const BirthdayMonthCard: React.FC<BirthdayMonthCardProps> = ({
   )
 }
 
-export default BirthdayMonthCard
+export default MonthCard

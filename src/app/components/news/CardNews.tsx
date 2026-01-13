@@ -3,14 +3,6 @@ import { ContainerIcon } from '../icons/ContainerIcon'
 
 const CardNews: React.FC = () => {
   return (
-    // <div className="flex w-[417px] items-center gap-[16.61px] relative">
-    //     <img className="relative w-[105.38px] h-[111.83px] object-cover" src="" alt="news" />
-    //     <div>
-    //         <div>
-
-    //         </div>
-    //     </div>
-    // </div>
     <div className="w-96 flex justify-start items-center gap-4 whitespace-break-spaces">
       <Image
         alt="News thumbnail"

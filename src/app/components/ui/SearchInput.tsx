@@ -17,17 +17,17 @@ const SearchInput: React.FC<SearchInputProps> = React.memo(
       <Input
         size="lg"
         variant="bordered"
-        className={`bg-white/30 rounded-[10px] outline-1 -outline-offset-1 outline-neutral-900/20 ${
-          className || ''
-        }`}
-        endContent={<SearchIcon />}
+        className={`${className || ''}`}
+        endContent={<SearchIcon className="text-gray-400" />}
         classNames={{
           inputWrapper: [
-            'px-0', // Restore padding from original design
-            '!bg-transparent', // Ensure background is transparent to let parent bg show or handle it here
-            'border-none', // Remove default border
-            'data-[hover=true]:bg-transparent',
-            'group-data-[focus=true]:bg-transparent'
+            'bg-white',
+            'border-1',
+            'border-gray-200',
+            'shadow-sm',
+            'hover:border-gray-300',
+            'group-data-[focus=true]:border-gray-400',
+            '!cursor-text'
           ],
           innerWrapper: 'bg-transparent',
           input: [
@@ -35,14 +35,7 @@ const SearchInput: React.FC<SearchInputProps> = React.memo(
             'text-sm',
             'font-medium',
             'font-["Poppins"]',
-            'outline-none',
-            'focus:outline-none',
-            'focus:ring-0',
-            'placeholder:text-neutral-900',
-            '!bg-transparent',
-            'leading-8',
-            'px-0',
-            'h-full'
+            'placeholder:text-gray-900'
           ]
         }}
         placeholder={placeholder}
