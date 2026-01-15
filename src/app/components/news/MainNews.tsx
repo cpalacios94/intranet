@@ -85,7 +85,7 @@ const MainNews: React.FC = () => {
             alt="Chevron forward"
             src={chevronForward}
           /> */}
-          <ChevronIcon className="relative w-[17.05px] h-[17.05px] aspect-[1]" />
+          <ChevronIcon className="relative w-[17.05px] h-[17.05px] aspect-[1] text-rose-800" />
         </div>
       </div>
     </Link>

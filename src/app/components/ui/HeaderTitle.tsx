@@ -53,7 +53,7 @@ const HeaderTitle: React.FC<HeaderTitleProps> = ({
             </a>
           </div>
 
-          <ChevronIcon className="relative w-[17.05px] h-[17.05px] aspect-[1]" />
+          <ChevronIcon className="relative w-[17.05px] h-[17.05px] aspect-[1] text-rose-800" />
         </div>
       )}
     </div>
