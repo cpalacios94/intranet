@@ -1,4 +1,5 @@
 import { ContainerIcon } from '../icons/ContainerIcon'
+import NextImage from 'next/image'
 import { MOCK_NEWS } from '../../constants'
 import { ChevronIcon } from '../icons/ChevronIcon'
 import Link from 'next/link'
@@ -12,16 +13,16 @@ const MainNews: React.FC = () => {
       href={`/noticias/${featuredNews.slug}`}
       className="flex h-[300px] items-center gap-[25px] relative group cursor-pointer"
     >
-      <div
-        className="relative flex-1 grow h-[300px] rounded-[7.1px] bg-cover bg-position-[50%_50%]"
-        style={{
-          backgroundImage: `url(${
-            typeof featuredNews.image === 'string'
-              ? featuredNews.image
-              : featuredNews.image.src
-          })`
-        }}
-      />
+      <div className="relative flex-1 grow h-[300px] rounded-[7.1px] overflow-hidden">
+        <NextImage
+          src={featuredNews.image}
+          alt={featuredNews.title}
+          fill
+          className="object-cover"
+          priority
+          sizes="(max-width: 1280px) 100vw, 50vw"
+        />
+      </div>
 
       <div className="gap-[10.66px] flex-1 grow flex flex-col items-start relative">
         <div className="flex flex-col h-[18px] items-start justify-center relative self-stretch w-full">
