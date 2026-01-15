@@ -1,19 +1,20 @@
 'use client'
 
 import { useState, useMemo, useDeferredValue } from 'react'
-import Header from '../components/Header'
-import Navbar from '../components/NavBar'
-import TopBar from '../components/TopBar'
-import HeaderTitle from '../components/HeaderTitle'
-import { SidebarAccordion } from '../components/SidebarAccordion'
-import ContactCard from '../components/ContactCard'
+import Header from '../components/layout/Header'
+import Navbar from '../components/layout/NavBar'
+import TopBar from '../components/layout/TopBar'
+import HeaderTitle from '../components/ui/HeaderTitle'
+import { SidebarAccordion } from '../components/directory/SidebarAccordion'
+import ContactCard from '../components/directory/ContactCard'
 import { ScrollShadow } from '@heroui/scroll-shadow'
-import SearchInput from '../components/SearchInput'
+import SearchInput from '../components/ui/SearchInput'
 import { Unidad, Contact } from '../../types/directory'
 
 import { filterContacts } from '../actions/contact'
 
 import { Spinner } from '@heroui/react'
+import { WaveBackground } from '../components/layout/WaveBackground'
 
 interface ContactClientProps {
   directory: Unidad[]
@@ -61,7 +62,10 @@ export default function ContactClient({
   }
 
   return (
-    <div className={`min-h-screen w-screen font-sans`}>
+    <div
+      className={`min-h-screen w-screen font-sans z-0 relative flex flex-col`}
+    >
+      <WaveBackground />
       <TopBar />
       <Header />
       <Navbar />
@@ -86,12 +90,12 @@ export default function ContactClient({
           </div>
         </div>
         <div className="flex flex-col w-3/4 items-start gap-[15px] relative">
-          <div className="w-full flex justify-end">
-            <div className="w-1/2">
+          <div className="w-full h-11 flex items-center justify-end">
+            <div className="w-1/2 h-full">
               <SearchInput
                 value={searchQuery}
                 onChange={setSearchQuery}
-                className="w-full h-11 px-3 py-2"
+                className="w-full h-full px-3"
               />
             </div>
           </div>

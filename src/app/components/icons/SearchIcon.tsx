@@ -6,9 +6,11 @@ export const SearchIcon = ({ className }: { className?: string }) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <mask
         id="mask0_187_2601"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         style={{ maskType: 'alpha' } as any}
         maskUnits="userSpaceOnUse"
         x="0"

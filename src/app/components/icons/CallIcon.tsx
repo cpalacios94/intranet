@@ -10,6 +10,7 @@ export const CallIcon = ({ className }: { className?: string }) => {
     >
       <mask
         id="mask0_155_2309"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         style={{ maskType: 'alpha' } as any}
         maskUnits="userSpaceOnUse"
         x="0"

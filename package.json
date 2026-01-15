@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@heroui/button": "^2.2.29",
     "@heroui/react": "^2.8.5",
     "@heroui/scroll-shadow": "^2.3.18",
     "@heroui/spinner": "^2.2.25",

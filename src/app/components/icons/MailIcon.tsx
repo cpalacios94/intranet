@@ -10,6 +10,7 @@ export const MailIcon = ({ className }: { className?: string }) => {
     >
       <mask
         id="mask0_141_1663"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         style={{ maskType: 'alpha' } as any}
         maskUnits="userSpaceOnUse"
         x="0"
