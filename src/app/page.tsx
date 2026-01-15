@@ -6,6 +6,7 @@ import EventsSection from './components/news/EventSection'
 import { WaveBackground } from './components/layout/WaveBackground'
 
 function App() {
+  console.log('test deploy')
   return (
     <div className="min-h-screen w-screen font-sans relative flex flex-col z-0">
       <WaveBackground />
