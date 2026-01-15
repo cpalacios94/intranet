@@ -1,0 +1,61 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: ['main'] # O "master", según tu rama principal
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          # IMPORTANTE: Todo en minúsculas aquí abajo
+          tags: ghcr.io/${{ github.repository_owner }}/nombre-repo:latest
+          build-args: |
+            NEXT_PUBLIC_MESA_AYUDA_URL=${{ secrets.NEXT_PUBLIC_MESA_AYUDA_URL }}
+            NEXT_PUBLIC_SERVICIOS_ADMIN_URL=${{ secrets.NEXT_PUBLIC_SERVICIOS_ADMIN_URL }}
+            NEXT_PUBLIC_SIU_URL=${{ secrets.NEXT_PUBLIC_SIU_URL }}
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            # 1. Autenticar Docker en el servidor para poder bajar la imagen
+            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            # 2. Ir a la carpeta en Documentos
+            cd Documentos/mi-proyecto
+
+            # 3. Actualizar
+            docker compose pull
+            docker compose up -d
+
+            # 4. Limpieza de imágenes viejas
+            docker image prune -f
