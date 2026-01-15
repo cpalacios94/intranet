@@ -1,0 +1,136 @@
+'use client'
+
+import React, { useMemo, useRef, useState, useEffect } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import DayCard from './DayCard'
+
+interface DayCarouselProps {
+  selectedMonth: string // e.g., "01" for January
+  year: number
+  selectedDay: number
+  onDaySelect: (day: number) => void
+}
+
+const DayCarousel: React.FC<DayCarouselProps> = ({
+  selectedMonth,
+  year,
+  selectedDay,
+  onDaySelect
+}) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const daysInMonth = useMemo(() => {
+    const monthIndex = parseInt(selectedMonth, 10) - 1
+    // Get number of days in the month (0 day of next month gives last day of current)
+    return new Date(year, monthIndex + 1, 0).getDate()
+  }, [selectedMonth, year])
+
+  const days = useMemo(() => {
+    const monthIndex = parseInt(selectedMonth, 10) - 1
+    return Array.from({ length: daysInMonth }, (_, i) => {
+      const date = new Date(year, monthIndex, i + 1)
+      const dayName = date
+        .toLocaleDateString('es-ES', { weekday: 'short' })
+        .toUpperCase()
+        .replace('.', '') // Remove potential dot abbreviated
+
+      return {
+        number: i + 1,
+        name: dayName
+      }
+    })
+  }, [daysInMonth, selectedMonth, year])
+
+  const checkScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current
+      setCanScrollLeft(scrollLeft > 0)
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1)
+    }
+  }
+
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (container) {
+      container.addEventListener('scroll', checkScroll)
+      checkScroll() // Initial check
+      window.addEventListener('resize', checkScroll)
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', checkScroll)
+      }
+      window.removeEventListener('resize', checkScroll)
+    }
+  }, [days]) // Re-run when days change as content size changes
+
+  const scrollPrev = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current
+      container.scrollBy({ left: -200, behavior: 'smooth' })
+    }
+  }
+
+  const scrollNext = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current
+      container.scrollBy({ left: 200, behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <div className="w-full h-24 relative rounded-lg px-8 flex items-center group">
+      {/* Custom Navigation Buttons (reusing styles from MonthCarousel if valid, or adjusting) */}
+      <button
+        onClick={scrollPrev}
+        disabled={!canScrollLeft}
+        className="swiper-button-prev-days absolute left-2 z-10 text-gray-600 hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+        aria-label="Previous days"
+      >
+        <ChevronLeft size={24} />
+      </button>
+
+      <button
+        onClick={scrollNext}
+        disabled={!canScrollRight}
+        className="swiper-button-next-days absolute right-2 z-10 text-gray-600 hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+        aria-label="Next days"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      <div
+        ref={scrollContainerRef}
+        className="flex w-full overflow-x-auto scrollbar-hide scroll-smooth gap-2 px-4"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {days.map((day) => (
+          <div
+            key={day.number}
+            className="flex justify-center py-2 h-24 shrink-0 w-auto!"
+          >
+            {/* Added height to slide container to accommodate the absolute positioned dots below the card if needed */}
+            <div className="relative h-full flex flex-col items-center justify-between pt-2 w-14 gap-4">
+              <DayCard
+                dayNumber={day.number}
+                dayName={day.name}
+                isActive={day.number === selectedDay}
+                onClick={() => onDaySelect(day.number)}
+              />
+              <div className="left-0 top-0 relative inline-flex justify-start items-start gap-[3px]">
+                {/* Placeholder for dots if needed externally or handled by parent styles */}
+                <div className="w-[5px] h-[5px] bg-teal-400 rounded-[38px]" />
+                <div className="w-[5px] h-[5px] bg-teal-400 rounded-[38px]" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default DayCarousel

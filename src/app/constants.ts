@@ -1,4 +1,5 @@
-import { CalendarDay, EventItem, NewsItem } from './types'
+import { CalendarDay, Event, NewsItem } from './types'
+import pic from '@/assets/images/pic.png'
 
 export const COLORS = {
   primary: 'bg-ucsg-primary', // Rojo oscuro tipo UCSG
@@ -6,22 +7,37 @@ export const COLORS = {
   bgGradient: 'bg-gradient-to-b from-white via-pink-50 to-gray-100'
 }
 
-export const NEWS_ITEMS: NewsItem[] = [
+export const MOCK_NEWS: NewsItem[] = [
   {
     id: 1,
-    image:
-      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    slug: 'taller-interactivo-ingles-frances-1',
+    image: pic,
     category: 'EDUCACIÓN',
     title: 'Taller interactivo de Inglés y Francés',
     date: '15 Nov, 2023',
     description:
       'La Carrera de Negocios Internacionales organizó un taller interactivo de inglés y francés dirigido a postulantes, con palabras de bienvenida a cargo de su directora...',
-    isFeatured: true
+    isFeatured: true,
+    highlight:
+      'Vintage meets vogue is the only way to describe this serif typeface. Neue World encompasses the mode high-fashion aesthetic of the 1960s with a commercial take.',
+    details: `Mauris fermentum faucibus risus a efficitur. Morbi sit amet arcu turpis. Ut nisl velit, mattis at augue vel, molestie egestas justo. Aliquam elementum nibh neque, eu ornare nunc feugiat sed. Aliquam erat volutpat. Praesent vitae orci blandit, semper felis ac, interdum lacus.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis nunc urna, id lobortis elit dapibus et. Etiam ultricies leo justo, nec vehicula augue auctor et. Sed finibus volutpat dui. Nunc vitae urna dictum tellus luctus tincidunt quis feugiat dolor. Aliquam malesuada tristique urna, quis ornare diam venenatis quis. Nunc ligula lectus, posuere sit amet ultrices ut, porttitor efficitur mauris. Aliquam bibendum vitae turpis sed molestie. Donec massa lorem, semper vel pellentesque ut, ultrices in enim. Sed fringilla, mi porttitor sodales vehicula, felis enim gravida nisi, at mollis ante leo et ligula. Quisque non aliquam eros, in aliquet tellus. Mauris ullamcorper quam erat, vehicula rhoncus velit interdum eget.
+
+Mauris fermentum faucibus risus a efficitur. Morbi sit amet arcu turpis. Ut nisl velit, mattis at augue vel, molestie egestas justo. Aliquam elementum nibh neque, eu ornare nunc feugiat sed. Aliquam erat volutpat. Praesent vitae orci blandit, semper felis ac, interdum lacus.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis nunc urna, id lobortis elit dapibus et. Etiam ultricies leo justo, nec vehicula augue auctor et. Sed finibus volutpat dui. Nunc vitae urna dictum tellus luctus tincidunt quis feugiat dolor. Aliquam malesuada tristique urna, quis ornare diam venenatis quis. Nunc ligula lectus, posuere sit amet ultrices ut, porttitor efficitur mauris. Aliquam bibendum vitae turpis sed molestie. Donec massa lorem, semper vel pellentesque ut, ultrices in enim. Sed fringilla, mi porttitor sodales vehicula, felis enim gravida nisi, at mollis ante leo et ligula. Quisque non aliquam eros, in aliquet tellus. Mauris ullamcorper quam erat, vehicula rhoncus velit interdum eget.
+
+Proin pulvinar quam at aliquet sagittis. Quisque laoreet luctus bibendum. Aenean in dignissim orci. Suspendisse at augue eget neque dictum vestibulum eu ac orci. Integer imperdiet lectus nec urna mollis euismod. Proin et risus nulla. Cras at diam in risus feugiat accumsan. Nulla sit amet blandit mi, a convallis mauris. Quisque lacus dolor, cursus ac quam ac, tempus ultrices sem. Ut porttitor.
+
+Mauris fermentum faucibus risus a efficitur. Morbi sit amet arcu turpis. Ut nisl velit, mattis at augue vel, molestie egestas justo. Aliquam elementum nibh neque, eu ornare nunc feugiat sed. Aliquam erat volutpat. Praesent vitae orci blandit, semper felis ac, interdum lacus.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis nunc urna, id lobortis elit dapibus et. Etiam ultricies leo justo, nec vehicula augue auctor et. Sed finibus volutpat dui. Nunc vitae urna dictum tellus luctus tincidunt quis feugiat dolor. Aliquam malesuada tristique urna, quis ornare diam venenatis quis. Nunc ligula lectus, posuere sit amet ultrices ut, porttitor efficitur mauris. Aliquam bibendum vitae turpis sed molestie. Donec massa lorem, semper vel pellentesque ut, ultrices in enim. Sed fringilla, mi porttitor sodales vehicula, felis enim gravida nisi, at mollis ante leo et ligula. Quisque non aliquam eros, in aliquet tellus. Mauris ullamcorper quam erat, vehicula rhoncus velit interdum eget.`
   },
   {
     id: 2,
-    image:
-      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    slug: 'taller-interactivo-ingles-frances-2',
+    image: pic,
     title: 'Taller interactivo de Inglés y Francés',
     date: '15 Nov, 2023',
     description:
@@ -30,8 +46,8 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: 3,
-    image:
-      'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    slug: 'taller-interactivo-ingles-frances-3',
+    image: pic,
     title: 'Taller interactivo de Inglés y Francés',
     date: '15 Nov, 2023',
     description:
@@ -40,8 +56,8 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: 4,
-    image:
-      'https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    slug: 'taller-interactivo-ingles-frances-4',
+    image: pic,
     title: 'Taller interactivo de Inglés y Francés',
     date: '15 Nov, 2023',
     description:
@@ -50,8 +66,38 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: 5,
-    image:
-      'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    slug: 'taller-interactivo-ingles-frances-5',
+    image: pic,
+    title: 'Taller interactivo de Inglés y Francés',
+    date: '15 Nov, 2023',
+    description:
+      'La Carrera de Negocios Internacionales organizó un taller interactivo...',
+    isFeatured: false
+  },
+  {
+    id: 6,
+    slug: 'taller-interactivo-ingles-frances-6',
+    image: pic,
+    title: 'Taller interactivo de Inglés y Francés',
+    date: '15 Nov, 2023',
+    description:
+      'La Carrera de Negocios Internacionales organizó un taller interactivo...',
+    isFeatured: false
+  },
+  {
+    id: 7,
+    slug: 'taller-interactivo-ingles-frances-7',
+    image: pic,
+    title: 'Taller interactivo de Inglés y Francés',
+    date: '15 Nov, 2023',
+    description:
+      'La Carrera de Negocios Internacionales organizó un taller interactivo...',
+    isFeatured: false
+  },
+  {
+    id: 8,
+    slug: 'taller-interactivo-ingles-frances-8',
+    image: pic,
     title: 'Taller interactivo de Inglés y Francés',
     date: '15 Nov, 2023',
     description:
@@ -68,7 +114,9 @@ export const CALENDAR_DAYS: CalendarDay[] = [
   { day: 'LUN', date: '21', active: false }
 ]
 
-export const EVENT_ITEM: EventItem = {
+export const EVENT_ITEM: Event = {
+  id: '1',
+  slug: 'taller-interactivo-ingles-frances',
   title: 'Taller interactivo de Inglés y Francés',
   date: '15 Nov, 2023',
   image:
@@ -76,3 +124,28 @@ export const EVENT_ITEM: EventItem = {
   description:
     'La Carrera de Negocios Internacionales organizó un taller interactivo de inglés y francés dirigido a postulantes...'
 }
+
+export const MOCK_EVENTS: Event[] = [
+  {
+    id: '1',
+    slug: 'taller-interactivo-ingles-frances',
+    title: 'Taller interactivo de Inglés y Francés',
+    date: '15 Nov, 2023',
+    location: 'Aula Magna',
+    description:
+      'La Carrera de Negocios Internacionales organizó un taller interactivo de inglés y francés para fortalecer las habilidades lingüísticas de los estudiantes.',
+    image: pic,
+    category: 'Académico'
+  },
+  {
+    id: '2',
+    slug: 'conferencia-inteligencia-artificial',
+    title: 'Conferencia de Inteligencia Artificial',
+    date: '20 Nov, 2023',
+    location: 'Auditorio Principal',
+    description:
+      'Expertos internacionales discuten el futuro de la IA en la educación superior.',
+    image: pic,
+    category: 'Tecnología'
+  }
+]

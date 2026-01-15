@@ -1,0 +1,19 @@
+version: '3'
+services:
+  next-app:
+    container_name: nextjs-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Pasamos las variables PÚBLICAS para que se quemen en el build
+      args:
+        NEXT_PUBLIC_MESA_AYUDA_URL: ${NEXT_PUBLIC_MESA_AYUDA_URL}
+        NEXT_PUBLIC_SERVICIOS_ADMIN_URL: ${NEXT_PUBLIC_SERVICIOS_ADMIN_URL}
+        NEXT_PUBLIC_SIU_URL: ${NEXT_PUBLIC_SIU_URL}
+
+    ports:
+      - '3000:3000'
+
+    # Pasamos las variables PRIVADAS (Runtime) como API_URL
+    env_file:
+      - .env

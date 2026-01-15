@@ -10,6 +10,7 @@ export const PersonIcon = ({ className }: { className?: string }) => {
     >
       <mask
         id="mask0_141_1645"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         style={{ maskType: 'alpha' } as any}
         maskUnits="userSpaceOnUse"
         x="0"

@@ -1,16 +1,16 @@
-import Header from '../components/Header'
-import Navbar from '../components/NavBar'
-import HeaderTitle from '../components/HeaderTitle'
-import TopBar from '../components/TopBar'
-import BirthdayMainSection from '../components/BirthdayMainSection'
-import { WaveBackground } from '../components/WaveBackground'
+import Header from '../components/layout/Header'
+import Navbar from '../components/layout/NavBar'
+import HeaderTitle from '../components/ui/HeaderTitle'
+import TopBar from '../components/layout/TopBar'
+import BirthdayMainSection from '../components/birthday/BirthdayMainSection'
+import { WaveBackground } from '../components/layout/WaveBackground'
 import { Birthday } from '../types/birthday'
 
 export const dynamic = 'force-dynamic'
 
 const getBirthdays = async (): Promise<Birthday[]> => {
   try {
-    const res = await fetch('http://localhost:8080/api/cumpleanios', {
+    const res = await fetch(`${process.env.API_URL}/api/cumpleanios`, {
       cache: 'no-store' // Ensure fresh data
     })
     if (!res.ok) {
@@ -32,7 +32,9 @@ export default async function BirthdayPage() {
   const currentMonthIndex = now.getMonth()
 
   return (
-    <div className={`min-h-screen w-screen font-sans relative flex flex-col`}>
+    <div
+      className={`min-h-screen w-screen font-sans relative flex flex-col z-0`}
+    >
       <WaveBackground />
       <TopBar />
       <Header />
