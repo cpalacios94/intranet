@@ -2,8 +2,8 @@ import CardNews from './CardNews'
 
 const GridNews: React.FC = () => {
   return (
-    <div className="w-full grid grid-cols-2 gap-2">
-      {/* <div className="w-96 flex justify-start items-center gap-4">
+    <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* <div className="w-full flex justify-start items-center gap-4">
         <img
           className="w-28 h-28 rounded-[9.77px]"
           src="https://placehold.co/105x112"

@@ -3,25 +3,27 @@ import { ContainerIcon } from '../icons/ContainerIcon'
 
 const CardNews: React.FC = () => {
   return (
-    <div className="w-96 flex justify-start items-center gap-4 whitespace-break-spaces">
-      <Image
-        alt="News thumbnail"
-        className="rounded-[9.77px] object-cover"
-        src="https://placehold.co/105x112.png"
-        width={112}
-        height={112}
-      />
-      <div className="w-72 h-24 inline-flex flex-col justify-start items-start gap-2">
+    <div className="w-full flex flex-col sm:flex-row justify-start items-center gap-4 whitespace-break-spaces cursor-pointer group">
+      <div className="relative w-full sm:w-[112px] h-[112px] shrink-0">
+        <Image
+          alt="News thumbnail"
+          className="rounded-[9.77px] object-cover"
+          src="https://placehold.co/105x112.png"
+          fill
+          sizes="(max-width: 640px) 100vw, 112px"
+        />
+      </div>
+      <div className="w-full min-h-24 flex flex-col justify-start items-start gap-2">
         <div className="self-stretch flex flex-col justify-start items-start gap-[2.92px]">
-          <div className="self-stretch h-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
             <div className="self-stretch inline-flex justify-start items-start">
-              <div className="w-80 justify-start text-neutral-900 text-sm font-semibold font-['Poppins'] leading-4">
+              <div className="w-full justify-start text-neutral-900 text-sm font-semibold font-['Poppins'] leading-4 group-hover:text-rose-800 transition-colors line-clamp-2">
                 Taller interactivo de Inglés y Francés
               </div>
             </div>
           </div>
-          <div className="self-stretch h-5 inline-flex justify-start items-start flex-wrap content-start">
-            <div className="w-20 self-stretch py-[2.92px] inline-flex flex-col justify-center items-start">
+          <div className="self-stretch inline-flex justify-start items-start flex-wrap content-start">
+            <div className="w-full py-[2.92px] inline-flex flex-col justify-center items-start">
               <div className="h-4 pb-[0.55px] inline-flex justify-start items-center gap-1.5">
                 <div className="flex justify-start items-start">
                   <div className="w-2.5 h-2.5 relative">
@@ -36,8 +38,8 @@ const CardNews: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="self-stretch h-16 flex flex-col justify-start items-start">
-          <div className="self-stretch justify-start text-zinc-500 text-xs font-normal font-['Poppins'] leading-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-start text-zinc-500 text-xs font-normal font-['Poppins'] leading-4 line-clamp-2">
             La Carrera de Negocios Internacionales organizó un taller
             interactivo de inglés y francés dirigido a postulantes..
           </div>
