@@ -6,7 +6,6 @@ import Link from 'next/link'
 
 const MainNews: React.FC = () => {
   const featuredNews = MOCK_NEWS[0]
-  console.log(featuredNews.image)
   if (!featuredNews) return null
   return (
     <Link
