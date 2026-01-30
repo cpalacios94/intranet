@@ -59,8 +59,14 @@ export default function OracleFormsButton() {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button color="primary" onPress={onClose}>
-                  Entendido
+                <Button
+                  color="primary"
+                  onPress={() => {
+                    window.open(`microsoft-edge:${formsUrl}`, '_blank')
+                    onClose()
+                  }}
+                >
+                  Abrir en Edge
                 </Button>
               </ModalFooter>
             </>
