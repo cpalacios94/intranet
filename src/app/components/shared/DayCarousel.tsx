@@ -104,7 +104,7 @@ const DayCarousel: React.FC<DayCarouselProps> = ({
 
       <div
         ref={scrollContainerRef}
-        className="flex w-full overflow-x-auto scrollbar-hide scroll-smooth gap-2 px-4"
+        className="flex w-full overflow-x-auto scrollbar-hide scroll-smooth gap-2"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {days.map((day) => (

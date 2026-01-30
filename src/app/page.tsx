@@ -7,15 +7,15 @@ import { WaveBackground } from './components/layout/WaveBackground'
 
 function App() {
   return (
-    <div className="min-h-screen w-screen font-sans relative flex flex-col z-0">
+    <div className="min-h-screen w-full font-sans relative flex flex-col z-0">
       <WaveBackground />
       <TopBar />
       <Header />
       <NavBar />
 
       {/* 4. Contenido Principal */}
-      <div className="flex flex-col items-start gap-[22px] relative mx-4 xl:mx-[10%] z-10 grow mb-8">
-        <div className="flex flex-col xl:flex-row items-start gap-[27px] relative self-stretch w-full">
+      <div className="flex flex-col items-start gap-[22px] relative w-full px-4 xl:px-[10%] max-w-[1920px] mx-auto z-10 grow mb-8">
+        <div className="flex flex-col xl:flex-row items-stretch gap-[27px] relative self-stretch w-full">
           <NewsSection />
           <EventsSection />
           {/* <div className="p-4 border border-gray-200 rounded-lg">
