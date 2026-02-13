@@ -6,16 +6,8 @@ import Header from '../../components/layout/Header'
 import Navbar from '../../components/layout/NavBar'
 import TopBar from '../../components/layout/TopBar'
 import { WaveBackground } from '../../components/layout/WaveBackground'
-import { NewsItem } from '../../types'
-import { MOCK_NEWS } from '../../constants'
-
-// Mock data service
-const getNewsBySlug = async (slug: string): Promise<NewsItem | undefined> => {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 100))
-
-  return MOCK_NEWS.find((n) => n.slug === slug)
-}
+import { getComunicacionByCodigo } from '../../lib/api'
+import { extractCodigoFromSlug } from '../../lib/utils'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -23,7 +15,16 @@ interface PageProps {
 
 export default async function NewsPage({ params }: PageProps) {
   const { slug } = await params
-  const news = await getNewsBySlug(slug)
+
+  // Extraer el código del slug (último segmento después del guión)
+  const codigo = extractCodigoFromSlug(slug)
+
+  if (!codigo) {
+    notFound()
+  }
+
+  // Obtener la noticia por código
+  const news = await getComunicacionByCodigo(codigo)
 
   if (!news) {
     notFound()
@@ -40,7 +41,7 @@ export default async function NewsPage({ params }: PageProps) {
         <BreadcrumbsNav
           items={[
             { label: 'Noticias', href: '/noticias' },
-            { label: news.title }
+            { label: news.titulo }
           ]}
         />
 

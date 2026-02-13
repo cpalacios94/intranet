@@ -9,15 +9,7 @@ import EventMainSection from '../components/events/EventMainSection'
 
 export const dynamic = 'force-dynamic'
 
-// ... existing code
-
-export default async function BirthdayPage() {
-  // ... existing code
-  const events: any = []
-  const now = new Date()
-  const currentMonth = String(now.getMonth() + 1).padStart(2, '0')
-  const currentMonthIndex = now.getMonth()
-
+export default async function EventosPage() {
   return (
     <div
       className={`min-h-screen w-screen font-sans relative flex flex-col z-0`}
@@ -36,11 +28,7 @@ export default async function BirthdayPage() {
             viewAll={false}
           />
         </div>
-        <EventMainSection
-          events={events}
-          initialMonth={currentMonth}
-          currentMonthIndex={currentMonthIndex}
-        />
+        <EventMainSection />
       </div>
 
       <div className="w-full h-12 bg-ucsg-primary relative z-10" />

@@ -6,16 +6,8 @@ import Header from '../../components/layout/Header'
 import Navbar from '../../components/layout/NavBar'
 import TopBar from '../../components/layout/TopBar'
 import { WaveBackground } from '../../components/layout/WaveBackground'
-import { Event } from '../../types'
-import { MOCK_EVENTS } from '../../constants'
-
-// Mock data service - move to a real service later
-const getEventBySlug = async (slug: string): Promise<Event | undefined> => {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 100))
-
-  return MOCK_EVENTS.find((e) => e.slug === slug)
-}
+import { getComunicacionByCodigo } from '../../lib/api'
+import { extractCodigoFromSlug } from '../../lib/utils'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -23,7 +15,16 @@ interface PageProps {
 
 export default async function EventPage({ params }: PageProps) {
   const { slug } = await params
-  const event = await getEventBySlug(slug)
+
+  // Extraer el código del slug (último segmento después del guión)
+  const codigo = extractCodigoFromSlug(slug)
+
+  if (!codigo) {
+    notFound()
+  }
+
+  // Obtener el evento por código (tipoEvento=2 para eventos)
+  const event = await getComunicacionByCodigo(codigo, 2)
 
   if (!event) {
     notFound()
@@ -40,7 +41,7 @@ export default async function EventPage({ params }: PageProps) {
         <BreadcrumbsNav
           items={[
             { label: 'Eventos', href: '/eventos' },
-            { label: event.title }
+            { label: event.titulo }
           ]}
         />
 

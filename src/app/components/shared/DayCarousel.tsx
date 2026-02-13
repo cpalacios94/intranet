@@ -52,6 +52,22 @@ const DayCarousel: React.FC<DayCarouselProps> = ({
     }
   }
 
+  // Scroll to the selected day on mount / when selectedDay changes
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (container && selectedDay) {
+      const dayElement = container.children[selectedDay - 1] as HTMLElement
+      if (dayElement) {
+        const containerWidth = container.clientWidth
+        const dayLeft = dayElement.offsetLeft
+        const dayWidth = dayElement.offsetWidth
+        // Center the selected day in the visible area
+        const scrollTo = dayLeft - containerWidth / 2 + dayWidth / 2
+        container.scrollTo({ left: scrollTo, behavior: 'smooth' })
+      }
+    }
+  }, [selectedDay, days])
+
   useEffect(() => {
     const container = scrollContainerRef.current
     if (container) {

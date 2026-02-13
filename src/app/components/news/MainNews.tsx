@@ -1,21 +1,28 @@
 import { ContainerIcon } from '../icons/ContainerIcon'
 import NextImage from 'next/image'
-import { MOCK_NEWS } from '../../constants'
 import { ChevronIcon } from '../icons/ChevronIcon'
 import Link from 'next/link'
+import { ComunicacionEspecifica } from '@/app/types/comunicaciones'
+import { generateSlug, formatDate } from '@/app/lib/utils'
 
-const MainNews: React.FC = () => {
-  const featuredNews = MOCK_NEWS[0]
-  if (!featuredNews) return null
+interface MainNewsProps {
+  news: ComunicacionEspecifica
+}
+
+const MainNews: React.FC<MainNewsProps> = ({ news }) => {
+  if (!news) return null
+
+  const slug = generateSlug(news.titulo, news.codigo)
+
   return (
     <Link
-      href={`/noticias/${featuredNews.slug}`}
+      href={`/noticias/${slug}`}
       className="flex flex-col md:flex-row w-full min-h-[300px] items-center gap-[25px] relative group cursor-pointer"
     >
       <div className="relative w-full md:w-1/2 h-[300px] rounded-[7.1px] overflow-hidden shrink-0">
         <NextImage
-          src={featuredNews.image}
-          alt={featuredNews.title}
+          src={news.dirImagen}
+          alt={news.titulo}
           fill
           className="object-cover"
           priority
@@ -26,19 +33,21 @@ const MainNews: React.FC = () => {
       <div className="flex flex-col gap-4 w-full md:w-1/2">
         <div className="flex flex-col items-start justify-center w-full">
           <div className="font-['Poppins'] font-normal text-[#808080] text-[14.8px] leading-[25.6px]">
-            EDUCACIÓN
+            {news.categoria || 'NOTICIAS'}
           </div>
         </div>
 
         <div className="flex flex-col gap-2 w-full">
           <h3 className="font-['Poppins'] font-semibold text-[#181818] text-base leading-5 group-hover:text-rose-800 transition-colors line-clamp-2">
-            Taller interactivo de Inglés y Francés
+            {news.titulo}
           </h3>
 
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-2 text-[#181818]">
               <ContainerIcon className="w-4 h-4" />
-              <span className="font-['Poppins'] text-sm">15 Nov, 2023</span>
+              <span className="font-['Poppins'] text-sm">
+                {formatDate(news.fecInicio)}
+              </span>
             </div>
             <div className="w-px h-[13px] bg-[#dadada]" />
           </div>
@@ -46,12 +55,7 @@ const MainNews: React.FC = () => {
 
         <div className="w-full">
           <p className="font-['Poppins'] font-normal text-[#808080] text-xs leading-[18px] line-clamp-3">
-            La Carrera de Negocios Internacionales organizó un taller
-            interactivo de inglés y francés dirigido a postulantes, con palabras
-            de bienvenida a cargo de su directora, Gabriela Hurtado Cevallos. La
-            Carrera de Negocios Internacionales organizó un taller interactivo
-            de inglés y francés dirigido a postulantes, con palabras de
-            bienvenida a cargo de su directora, Gabriela Hurtado Cevallos.
+            {news.descripcion}
           </p>
         </div>
 

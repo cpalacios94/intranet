@@ -2,7 +2,7 @@ import TopBar from './components/layout/TopBar'
 import Header from './components/layout/Header'
 import NavBar from './components/layout/NavBar'
 import NewsSection from './components/news/NewSection'
-import EventsSection from './components/news/EventSection'
+import EventsSection from './components/events/EventSection'
 import { WaveBackground } from './components/layout/WaveBackground'
 
 function App() {

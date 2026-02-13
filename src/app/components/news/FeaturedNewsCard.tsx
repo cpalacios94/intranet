@@ -1,43 +1,43 @@
-'use client'
-
 import { Calendar } from 'lucide-react'
-import { NewsItem } from '../../types'
 import Link from 'next/link'
 import Image from 'next/image'
-
 import { ChevronIcon } from '../icons/ChevronIcon'
+import { ComunicacionEspecifica } from '@/app/types/comunicaciones'
+import { generateSlug, formatDate } from '@/app/lib/utils'
 
 interface FeaturedNewsCardProps {
-  news: NewsItem
+  news: ComunicacionEspecifica
 }
 
 const FeaturedNewsCard: React.FC<FeaturedNewsCardProps> = ({ news }) => {
+  const slug = generateSlug(news.titulo, news.codigo)
+
   return (
     <div className="w-full h-auto flex flex-col md:flex-row gap-6 bg-white shrink-0">
       <div className="w-full md:w-1/2 relative h-[300px] rounded-lg overflow-hidden">
         <Image
-          src={news.image}
-          alt={news.title}
+          src={news.dirImagen}
+          alt={news.titulo}
           fill
           className="object-cover"
         />
       </div>
       <div className="w-full md:w-1/2 flex flex-col justify-start items-start gap-4 py-2">
         <div className="text-zinc-500 text-sm font-normal uppercase tracking-wide">
-          {news.category || 'NOTICIAS'}
+          {news.categoria || 'NOTICIAS'}
         </div>
         <h3 className="text-zinc-900 text-xl font-bold font-['Poppins'] leading-tight">
-          {news.title}
+          {news.titulo}
         </h3>
         <div className="flex items-center gap-2 text-rose-800 text-xs font-medium font-['Poppins']">
           <Calendar className="w-4 h-4" />
-          <span>{news.date}</span>
+          <span>{formatDate(news.fecInicio)}</span>
         </div>
         <p className="text-zinc-600 text-sm font-normal font-['Poppins'] leading-relaxed line-clamp-4">
-          {news.description}
+          {news.descripcion}
         </p>
         <Link
-          href={`/noticias/${news.slug}`}
+          href={`/noticias/${slug}`}
           className="text-rose-800 text-sm font-bold hover:underline flex items-center gap-1 font-['Poppins']"
         >
           Leer más <ChevronIcon className="w-4 h-4" />

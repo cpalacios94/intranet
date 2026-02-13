@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'placehold.co'
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.ucsgtec.edu.ec'
+      },
+      {
+        protocol: 'https',
+        hostname: '*.ucsg.edu.ec'
       }
     ]
   },

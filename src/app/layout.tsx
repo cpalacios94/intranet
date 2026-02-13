@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className="light">
+    <html lang="es" className="light" suppressHydrationWarning>
       <body className={poppins.variable} suppressHydrationWarning={true}>
         <DisableInput />
         <Providers>{children}</Providers>

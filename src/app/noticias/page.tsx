@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic'
 
 // ... existing code
 
-export default async function BirthdayPage() {
+export default async function NewsPage() {
   // ... existing code
   const events: any = []
   const now = new Date()
