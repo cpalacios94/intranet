@@ -9,7 +9,9 @@ function subscribe() {
 
 function getSnapshot() {
   // Esta función se ejecuta en el cliente.
-  return /Edg/.test(window.navigator.userAgent)
+  const ua = window.navigator.userAgent
+  // Detectar Edge ('Edg') O Firefox 8 ('Firefox/8.')
+  return /Edg/.test(ua) || /Firefox\/8\./.test(ua)
 }
 
 function getServerSnapshot() {

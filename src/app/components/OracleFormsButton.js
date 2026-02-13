@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 
 import ClientOnly from './ui/ClientOnly' // Tu componente basado en useSyncExternalStore
 import { useEdgeDetector } from '../hooks/useEdgeDetector' // Tu hook de detección de Edge
@@ -9,12 +10,14 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure
+  useDisclosure,
+  Tooltip
 } from '@heroui/react'
 
 export default function OracleFormsButton() {
   const isEdge = useEdgeDetector()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const [copied, setCopied] = useState(false)
   //const formsUrl = 'http://ofr45.ucsg:7777/forms/frmservlet?config=00001'
   const formsUrl = 'http://ucsgofr4.ucsg:7777/forms/frmservlet?config=00001'
 
@@ -34,7 +37,7 @@ export default function OracleFormsButton() {
             : 'text-amber-400 hover:text-amber-300'
         }`}
       >
-        {isEdge ? 'SIU' : '⚠️ SIU (Solo Edge)'}
+        {isEdge ? 'SIU' : '⚠️ SIU (Solo Edge/Firefox 8)'}
       </button>
 
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -47,12 +50,12 @@ export default function OracleFormsButton() {
               <ModalBody>
                 <p className="text-black">
                   Este módulo requiere abrirse en{' '}
-                  <strong>Microsoft Edge</strong> con el{' '}
-                  <strong>Modo Internet Explorer</strong> activado.
+                  <strong>Microsoft Edge</strong> (Modo IE) o{' '}
+                  <strong>Mozilla Firefox 8</strong>.
                 </p>
                 <p className="text-sm text-gray-500">
-                  Si ya estás en Edge, asegúrate de recargar la página en modo
-                  IE.
+                  Si ya estás en uno de estos navegadores, asegúrate de la
+                  configuración.
                 </p>
               </ModalBody>
               <ModalFooter>
@@ -68,6 +71,25 @@ export default function OracleFormsButton() {
                 >
                   Abrir en Edge
                 </Button>
+                <Tooltip
+                  content={copied ? '¡Copiado!' : 'Copiar al portapapeles'}
+                  isOpen={copied}
+                  onOpenChange={(open) => {
+                    if (!open) setCopied(false)
+                  }}
+                >
+                  <Button
+                    color="warning"
+                    className="text-white"
+                    onPress={() => {
+                      navigator.clipboard.writeText(formsUrl)
+                      setCopied(true)
+                      setTimeout(() => setCopied(false), 2000)
+                    }}
+                  >
+                    Copiar Enlace (Para Firefox)
+                  </Button>
+                </Tooltip>
               </ModalFooter>
             </>
           )}
