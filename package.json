@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "git push origin main && ssh root@172.16.1.115 \"cd Documentos/projects/intranet && echo '--- ESTADO GIT ANTES ---' && git status && echo '--- BAJANDO CAMBIOS ---' && git pull origin main && echo '--- CONSTRUYENDO ---' && docker compose up -d --build && docker image prune -f\""
+    "deploy": "git push origin main && ssh root@172.16.1.115 \"cd Documentos/projects/intranet-deploy && echo '>>> ACTUALIZANDO FRONTEND...' && cd frontend && git pull origin main && echo '>>> ACTUALIZANDO BACKEND...' && cd ../backend && git pull origin main && cd .. && echo '>>> DESPLEGANDO TODO...' && docker compose up -d --build && docker image prune -f\""
   },
   "dependencies": {
     "@heroui/button": "^2.2.29",
