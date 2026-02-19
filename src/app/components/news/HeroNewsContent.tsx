@@ -21,11 +21,10 @@ const HeroNewsContent: React.FC<HeroNewsContentProps> = async ({
   })
 
   if (comunicaciones.length === 0) {
-    return (
-      <div className="w-full h-full flex items-center justify-center text-gray-500 py-12">
-        No hay noticias disponibles
-      </div>
-    )
+    return null
+    // <div className="w-full h-full flex items-center justify-center text-gray-500 py-12">
+    //   No hay noticias disponibles
+    // </div>
   }
 
   // Distribuir las noticias según el layout

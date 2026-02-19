@@ -61,7 +61,8 @@ export function formatDate(
   format: 'short' | 'long' = 'short'
 ): string {
   try {
-    const date = new Date(dateString)
+    const [year, month, day] = dateString.split('T')[0].split('-').map(Number)
+    const date = new Date(year, month - 1, day)
 
     if (format === 'long') {
       return date.toLocaleDateString('es-ES', {

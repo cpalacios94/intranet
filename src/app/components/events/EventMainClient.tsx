@@ -49,7 +49,11 @@ const EventMainClient: React.FC<EventMainClientProps> = ({ events }) => {
     const monthIndex = parseInt(selectedMonth, 10) - 1
 
     return events.filter((event) => {
-      const eventDate = new Date(event.fecInicio)
+      const [year, month, day] = event.fecInicio
+        .split('T')[0]
+        .split('-')
+        .map(Number)
+      const eventDate = new Date(year, month - 1, day)
       const matchesDate =
         eventDate.getDate() === selectedDay &&
         eventDate.getMonth() === monthIndex &&
@@ -131,6 +135,7 @@ const EventMainClient: React.FC<EventMainClientProps> = ({ events }) => {
               date={formatDate(event.fecInicio)}
               location={event.ubicacion ?? ''}
               description={event.descripcion}
+              image={event.dirImagen}
             />
           ))}
         </div>

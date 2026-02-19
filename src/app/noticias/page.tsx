@@ -22,9 +22,7 @@ export default async function NewsPage() {
   const currentMonthIndex = now.getMonth()
 
   return (
-    <div
-      className={`min-h-screen w-screen font-sans relative flex flex-col z-0`}
-    >
+    <div className={`min-h-screen w-full font-sans relative flex flex-col z-0`}>
       <WaveBackground />
       <TopBar />
       <Header />

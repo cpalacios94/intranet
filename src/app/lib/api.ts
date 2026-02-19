@@ -59,7 +59,7 @@ export async function getComunicacionByCodigo(
   tipoEvento: number = 1
 ): Promise<ComunicacionEspecifica | null> {
   // Buscar en las secciones más comunes en paralelo
-  const secciones = [1, 2, 3]
+  const secciones = [1, 2, 3, 4]
 
   try {
     const promises = secciones.map((seccion) =>

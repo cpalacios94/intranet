@@ -82,7 +82,7 @@ const BottomNewsContent: React.FC<BottomNewsContentProps> = async ({
         </div>
 
         {/* Description */}
-        <p className="text-zinc-500 text-sm font-normal font-['Poppins'] leading-7">
+        <p className="text-zinc-500 text-sm font-normal font-['Poppins'] leading-7 line-clamp-6">
           {news.descripcion}
         </p>
 

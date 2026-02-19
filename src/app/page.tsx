@@ -18,9 +18,6 @@ function App() {
         <div className="flex flex-col xl:flex-row items-stretch gap-[27px] relative self-stretch w-full">
           <NewsSection />
           <EventsSection />
-          {/* <div className="p-4 border border-gray-200 rounded-lg">
-            <SidebarAccordion />
-          </div> */}
         </div>
       </div>
 

@@ -120,9 +120,9 @@ const NewsDetail: React.FC<NewsDetailProps> = ({ news }) => {
             </div>
           </div>
         </div>
-        <div className="self-stretch justify-start text-neutral-600 text-lg font-normal font-['Helvetica'] leading-6 whitespace-pre-wrap">
+        {/* <div className="self-stretch justify-start text-neutral-600 text-lg font-normal font-['Helvetica'] leading-6 whitespace-pre-wrap">
           {news.descripcion}
-        </div>
+        </div> */}
 
         {news.highlight && (
           <div className="self-stretch p-10 bg-rose-800/10 shadow-[inset_4px_0px_0px_0px_rgba(169,0,70,1.00)] inline-flex justify-start items-start gap-6">

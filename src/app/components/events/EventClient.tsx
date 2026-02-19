@@ -28,7 +28,11 @@ const EventClient: React.FC<EventClientProps> = ({ events }) => {
   const filteredEvents = useMemo(() => {
     const monthIndex = parseInt(selectedMonth, 10) - 1
     return events.filter((event) => {
-      const eventDate = new Date(event.fecInicio)
+      const [year, month, day] = event.fecInicio
+        .split('T')[0]
+        .split('-')
+        .map(Number)
+      const eventDate = new Date(year, month - 1, day)
       return (
         eventDate.getDate() === selectedDay &&
         eventDate.getMonth() === monthIndex &&
@@ -92,6 +96,7 @@ const EventClient: React.FC<EventClientProps> = ({ events }) => {
               modules={[Pagination, Autoplay]}
               spaceBetween={20}
               slidesPerView={1}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
               pagination={{ clickable: true }}
               className="w-full h-full pb-10 [&_.swiper-pagination]:bottom-0! [&_.swiper-pagination-bullet]:bg-zinc-300! [&_.swiper-pagination-bullet]:opacity-100! [&_.swiper-pagination-bullet]:w-3! [&_.swiper-pagination-bullet]:h-3! [&_.swiper-pagination-bullet-active]:bg-rose-700!"
             >

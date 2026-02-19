@@ -11,9 +11,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function EventosPage() {
   return (
-    <div
-      className={`min-h-screen w-screen font-sans relative flex flex-col z-0`}
-    >
+    <div className={`min-h-screen w-full font-sans relative flex flex-col z-0`}>
       <WaveBackground />
       <TopBar />
       <Header />

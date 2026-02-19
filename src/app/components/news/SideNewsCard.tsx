@@ -32,7 +32,7 @@ const SideNewsCard: React.FC<SideNewsCardProps> = ({ news }) => {
           <Calendar className="w-3 h-3 text-rose-800" />
           <span>{formatDate(news.fecInicio)}</span>
         </div>
-        <p className="text-zinc-600 text-xs font-normal leading-snug line-clamp-2">
+        <p className="text-zinc-600 text-xs font-normal font-['Poppins'] leading-snug line-clamp-2">
           {news.descripcion}
         </p>
       </div>

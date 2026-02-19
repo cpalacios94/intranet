@@ -33,9 +33,15 @@ const NavBar: React.FC = () => {
             Servicios en línea administrativos
           </div>
         </Link>
-        <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
-          Gestor documental
-        </div>
+        <Link
+          href={process.env.NEXT_PUBLIC_GESTOR_DOCUMENTAL_URL ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
+            Gestor documental
+          </div>
+        </Link>
         <Link
           href={process.env.NEXT_PUBLIC_MESA_AYUDA_URL ?? '#'}
           target="_blank"

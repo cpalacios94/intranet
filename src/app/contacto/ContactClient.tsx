@@ -62,9 +62,7 @@ export default function ContactClient({
   }
 
   return (
-    <div
-      className={`min-h-screen w-screen font-sans z-0 relative flex flex-col`}
-    >
+    <div className={`min-h-screen w-full font-sans z-0 relative flex flex-col`}>
       <WaveBackground />
       <TopBar />
       <Header />

@@ -7,7 +7,7 @@ import InstagramFeed from '../components/social/InstagramFeed'
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen w-screen font-sans">
+    <div className="min-h-screen w-full font-sans">
       <TopBar />
       <Header />
       <Navbar />

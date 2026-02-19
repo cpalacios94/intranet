@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import pic from '@/assets/images/pic.png'
 import { Calendar, MapPinned } from 'lucide-react'
 
 interface EventHeroCardProps {
@@ -11,6 +10,7 @@ interface EventHeroCardProps {
   date: string
   location: string
   description: string
+  image: string
 }
 
 const EventHeroCard: React.FC<EventHeroCardProps> = ({
@@ -18,18 +18,22 @@ const EventHeroCard: React.FC<EventHeroCardProps> = ({
   title,
   date,
   location,
-  description
+  description,
+  image
 }) => {
   return (
     <Link
       href={`/eventos/${slug}`}
       className="w-full h-auto inline-flex flex-col justify-start items-center gap-4 group cursor-pointer"
     >
-      <Image
-        className="w-full h-64 rounded-[9.77px] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-        src={pic}
-        alt={title}
-      />
+      <div className="relative w-full h-64">
+        <Image
+          className="rounded-[9.77px] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          src={image}
+          alt={title}
+          fill
+        />
+      </div>
       <div className="self-stretch flex flex-col justify-start items-start gap-2">
         <div className="self-stretch flex flex-col justify-start items-start gap-[2.92px]">
           <div className="self-stretch h-auto flex flex-col justify-start items-start">
