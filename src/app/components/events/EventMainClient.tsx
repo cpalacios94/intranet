@@ -44,6 +44,21 @@ const EventMainClient: React.FC<EventMainClientProps> = ({ events }) => {
     setSelectedDay(1)
   }
 
+  const daysWithEvents = useMemo(() => {
+    const monthIndex = parseInt(selectedMonth, 10) - 1
+    const days = new Set<number>()
+    events.forEach((event) => {
+      const [year, month, day] = event.fecInicio
+        .split('T')[0]
+        .split('-')
+        .map(Number)
+      if (year === currentYear && month - 1 === monthIndex) {
+        days.add(day)
+      }
+    })
+    return Array.from(days)
+  }, [events, selectedMonth, currentYear])
+
   // Filtrar eventos por la fecha seleccionada y búsqueda
   const filteredEvents = useMemo(() => {
     const monthIndex = parseInt(selectedMonth, 10) - 1
@@ -97,6 +112,7 @@ const EventMainClient: React.FC<EventMainClientProps> = ({ events }) => {
         year={currentYear}
         selectedDay={selectedDay}
         onDaySelect={setSelectedDay}
+        daysWithEvents={daysWithEvents}
       />
 
       <HeaderTitle

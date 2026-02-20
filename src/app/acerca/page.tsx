@@ -3,17 +3,18 @@ import HeaderTitle from '../components/ui/HeaderTitle'
 import KeyIcon from '../components/icons/KeyIcon'
 import Navbar from '../components/layout/NavBar'
 import TopBar from '../components/layout/TopBar'
-import InstagramFeed from '../components/social/InstagramFeed'
 import Link from 'next/link'
+import { WaveBackground } from '../components/layout/WaveBackground'
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen w-full font-sans">
+    <div className="min-h-screen w-full font-sans flex flex-col relative z-0">
+      <WaveBackground />
       <TopBar />
       <Header />
       <Navbar />
 
-      <div className="flex flex-col items-start gap-[22px] relative mx-[10%]">
+      <div className="flex-1 flex flex-col items-start gap-[22px] relative mx-[10%] z-10">
         <div className="flex items-start gap-[27px] relative self-stretch w-full">
           <HeaderTitle
             titleFirstWorld="Acerca de la"
@@ -40,15 +41,10 @@ export default function AboutPage() {
               </div>
             </div>
           </Link>
-          <div className="flex flex-col items-start gap-5 w-full">
-            <div className="w-full h-full border rounded-xl">
-              <InstagramFeed />
-            </div>
-          </div>
         </div>
       </div>
 
-      <div className="w-full h-12 bg-ucsg-primary relative top-22" />
+      <div className="w-full h-12 bg-ucsg-primary mt-auto" />
     </div>
   )
 }

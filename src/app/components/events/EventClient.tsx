@@ -24,6 +24,21 @@ const EventClient: React.FC<EventClientProps> = ({ events }) => {
   const [selectedMonth, setSelectedMonth] = useState<string>(currentMonth)
   const [selectedDay, setSelectedDay] = useState<number>(now.getDate())
 
+  const daysWithEvents = useMemo(() => {
+    const monthIndex = parseInt(selectedMonth, 10) - 1
+    const days = new Set<number>()
+    events.forEach((event) => {
+      const [year, month, day] = event.fecInicio
+        .split('T')[0]
+        .split('-')
+        .map(Number)
+      if (year === currentYear && month - 1 === monthIndex) {
+        days.add(day)
+      }
+    })
+    return Array.from(days)
+  }, [events, selectedMonth, currentYear])
+
   // Filtrar eventos por la fecha seleccionada
   const filteredEvents = useMemo(() => {
     const monthIndex = parseInt(selectedMonth, 10) - 1
@@ -66,6 +81,7 @@ const EventClient: React.FC<EventClientProps> = ({ events }) => {
         year={currentYear}
         selectedDay={selectedDay}
         onDaySelect={setSelectedDay}
+        daysWithEvents={daysWithEvents}
       />
 
       <div className="flex-1 min-h-0 w-full flex flex-col justify-center items-center gap-4 relative">

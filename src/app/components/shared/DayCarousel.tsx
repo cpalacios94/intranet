@@ -9,13 +9,15 @@ interface DayCarouselProps {
   year: number
   selectedDay: number
   onDaySelect: (day: number) => void
+  daysWithEvents?: number[]
 }
 
 const DayCarousel: React.FC<DayCarouselProps> = ({
   selectedMonth,
   year,
   selectedDay,
-  onDaySelect
+  onDaySelect,
+  daysWithEvents = []
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -136,7 +138,9 @@ const DayCarousel: React.FC<DayCarouselProps> = ({
                 isActive={day.number === selectedDay}
                 onClick={() => onDaySelect(day.number)}
               />
-              <div className="left-0 top-0 relative inline-flex justify-start items-start gap-[3px]">
+              <div
+                className={`left-0 top-0 relative inline-flex justify-start items-start gap-[3px] ${daysWithEvents.includes(day.number) ? 'opacity-100' : 'opacity-0'}`}
+              >
                 {/* Placeholder for dots if needed externally or handled by parent styles */}
                 <div className="w-[5px] h-[5px] bg-teal-400 rounded-[38px]" />
                 <div className="w-[5px] h-[5px] bg-teal-400 rounded-[38px]" />

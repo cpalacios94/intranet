@@ -6,9 +6,9 @@ import HeaderTitle from '../components/ui/HeaderTitle'
 import TopBar from '../components/layout/TopBar'
 import { WaveBackground } from '../components/layout/WaveBackground'
 import NewsMainSection from '../components/news/NewsMainSection'
-import GestorBanner from '../components/shared/GestorBanner'
 import HeroNewsSection from '../components/news/HeroNewsSection'
 import BottomNewsSection from '../components/news/BottomNewsSection'
+import InstagramFeed from '../components/social/InstagramFeed'
 
 export const dynamic = 'force-dynamic'
 
@@ -38,9 +38,14 @@ export default async function NewsPage() {
           />
         </div>
         <NewsMainSection />
-        <GestorBanner />
+        {/* <GestorBanner /> */}
         <HeroNewsSection />
         <BottomNewsSection />
+        <div className="flex flex-col items-start gap-5 w-full">
+          <div className="w-full h-full border rounded-xl">
+            <InstagramFeed />
+          </div>
+        </div>
       </div>
 
       <div className="w-full h-12 bg-ucsg-primary relative z-10" />
