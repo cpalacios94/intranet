@@ -19,7 +19,8 @@ export default function OracleFormsButton() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const [copied, setCopied] = useState(false)
   //const formsUrl = 'http://ofr45.ucsg:7777/forms/frmservlet?config=00001'
-  const formsUrl = 'http://ucsgofr4.ucsg:7777/forms/frmservlet?config=00001'
+  //const formsUrl = 'http://ucsgofr4.ucsg:7777/forms/frmservlet?config=00001'
+  const formsUrl = process.env.NEXT_PUBLIC_SIU_URL || '#'
 
   return (
     <ClientOnly fallback={<SkeletonButton />}>
