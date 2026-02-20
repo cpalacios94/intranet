@@ -11,7 +11,6 @@ const NavBar: React.FC = () => {
             Inicio
           </div>
         </Link>
-
         <OracleFormsButton />
         <div className="flex justify-center items-center h-full text-[10px] sm:text-xs lg:text-sm font-bold font-['Poppins'] cursor-pointer hover:text-gray-300 whitespace-nowrap">
           SIU 2.0

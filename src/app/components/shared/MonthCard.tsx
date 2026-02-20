@@ -15,6 +15,7 @@ const MonthCard: React.FC<MonthCardProps> = ({
     <div
       className="w-full relative flex flex-col items-center gap-4 cursor-pointer"
       onClick={onClick}
+      data-active={isActive}
     >
       <div
         className={`w-full h-16 relative rounded-lg outline -outline-offset-1 ${

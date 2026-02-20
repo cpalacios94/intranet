@@ -41,7 +41,14 @@ const EventMainClient: React.FC<EventMainClientProps> = ({ events }) => {
 
   const handleMonthSelect = (month: string) => {
     setSelectedMonth(month)
-    setSelectedDay(1)
+
+    // If the selected month is the current real-world month, default to today's date
+    const selectedMonthIndex = parseInt(month, 10) - 1
+    if (selectedMonthIndex === currentMonthIndex) {
+      setSelectedDay(new Date().getDate())
+    } else {
+      setSelectedDay(1)
+    }
   }
 
   const daysWithEvents = useMemo(() => {

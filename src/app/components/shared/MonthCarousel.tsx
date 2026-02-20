@@ -35,11 +35,10 @@ const MonthCarousel: React.FC<MonthCarouselProps> = ({
     'Diciembre'
   ]
 
-  // Generate 12 months starting from currentMonthIndex
+  // Generate 12 months starting from January (index 0)
   const orderedMonths = Array.from({ length: 12 }, (_, i) => {
-    const monthIndex = (currentMonthIndex + i) % 12
-    const monthName = months[monthIndex]
-    const monthNumber = String(monthIndex + 1).padStart(2, '0')
+    const monthName = months[i]
+    const monthNumber = String(i + 1).padStart(2, '0')
     return {
       name: monthName,
       number: monthNumber,
@@ -63,6 +62,30 @@ const MonthCarousel: React.FC<MonthCarouselProps> = ({
       // Check initial state
       checkScroll()
       window.addEventListener('resize', checkScroll)
+
+      // Scroll to currently selected month on mount
+      const activeMonthCard = container.querySelector(
+        '[data-active="true"]'
+      ) as HTMLElement | null
+      if (activeMonthCard) {
+        // Find the parent div with .shrink-0 that contains the card
+        const cardContainer = activeMonthCard.closest(
+          '.shrink-0'
+        ) as HTMLElement | null
+        if (cardContainer) {
+          const containerWidth = container.clientWidth
+          const cardLeft = cardContainer.offsetLeft
+          const cardWidth = cardContainer.offsetWidth
+          // Align the active card to the left of the visible area
+          const scrollTo = Math.max(0, cardLeft - container.offsetLeft)
+          container.scrollTo({ left: scrollTo, behavior: 'instant' })
+
+          // Re-check scroll state after layout/scroll finishes
+          requestAnimationFrame(() => {
+            checkScroll()
+          })
+        }
+      }
     }
     return () => {
       if (container) {

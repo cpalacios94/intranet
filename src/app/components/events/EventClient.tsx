@@ -39,7 +39,7 @@ const EventClient: React.FC<EventClientProps> = ({ events }) => {
     return Array.from(days)
   }, [events, selectedMonth, currentYear])
 
-  // Filtrar eventos por la fecha seleccionada
+  // EventMainClient handles MonthCarousel, so we don't need to change EventClient's handleMonthSelect since it doesn't have one.
   const filteredEvents = useMemo(() => {
     const monthIndex = parseInt(selectedMonth, 10) - 1
     return events.filter((event) => {
