@@ -6,6 +6,7 @@ import Header from '../../components/layout/Header'
 import Navbar from '../../components/layout/NavBar'
 import TopBar from '../../components/layout/TopBar'
 import { WaveBackground } from '../../components/layout/WaveBackground'
+import Footer from '../../components/layout/Footer'
 import { getComunicacionByCodigo } from '../../lib/api'
 import { extractCodigoFromSlug } from '../../lib/utils'
 
@@ -48,7 +49,7 @@ export default async function EventPage({ params }: PageProps) {
         <EventDetail event={event} />
       </div>
 
-      <div className="w-full h-12 bg-ucsg-primary relative z-10" />
+      <Footer />
     </div>
   )
 }

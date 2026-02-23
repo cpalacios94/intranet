@@ -5,6 +5,7 @@ import Navbar from '../components/layout/NavBar'
 import HeaderTitle from '../components/ui/HeaderTitle'
 import TopBar from '../components/layout/TopBar'
 import { WaveBackground } from '../components/layout/WaveBackground'
+import Footer from '../components/layout/Footer'
 import EventMainSection from '../components/events/EventMainSection'
 
 export const dynamic = 'force-dynamic'
@@ -29,7 +30,7 @@ export default async function EventosPage() {
         <EventMainSection />
       </div>
 
-      <div className="w-full h-12 bg-ucsg-primary relative z-10" />
+      <Footer />
     </div>
   )
 }

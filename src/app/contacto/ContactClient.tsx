@@ -15,6 +15,7 @@ import { filterContacts } from '../actions/contact'
 
 import { Spinner } from '@heroui/react'
 import { WaveBackground } from '../components/layout/WaveBackground'
+import Footer from '../components/layout/Footer'
 
 interface ContactClientProps {
   directory: Unidad[]
@@ -130,7 +131,9 @@ export default function ContactClient({
         </div>
       </div>
 
-      <div className="w-full h-12 bg-ucsg-primary relative top-22" />
+      <div className="relative top-22 w-full">
+        <Footer />
+      </div>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import Navbar from '../components/layout/NavBar'
 import TopBar from '../components/layout/TopBar'
 import Link from 'next/link'
 import { WaveBackground } from '../components/layout/WaveBackground'
+import Footer from '../components/layout/Footer'
 
 export default function AboutPage() {
   return (
@@ -44,7 +45,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="w-full h-12 bg-ucsg-primary mt-auto" />
+      <Footer />
     </div>
   )
 }

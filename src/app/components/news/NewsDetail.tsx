@@ -134,9 +134,10 @@ const NewsDetail: React.FC<NewsDetailProps> = ({ news }) => {
         )}
 
         {news.detalleDesc && (
-          <div className="self-stretch justify-start text-neutral-600 text-lg font-normal font-['Helvetica'] leading-6 whitespace-pre-wrap">
-            {news.detalleDesc}
-          </div>
+          <div
+            className="self-stretch justify-start text-neutral-600 text-lg font-normal font-['Helvetica'] leading-6 whitespace-pre-wrap [&_a]:text-rose-800 hover:[&_a]:text-rose-900 [&_a]:underline"
+            dangerouslySetInnerHTML={{ __html: news.detalleDesc }}
+          />
         )}
       </div>
     </div>

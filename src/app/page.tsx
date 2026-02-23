@@ -4,6 +4,7 @@ import NavBar from './components/layout/NavBar'
 import NewsSection from './components/news/NewSection'
 import EventsSection from './components/events/EventSection'
 import { WaveBackground } from './components/layout/WaveBackground'
+import Footer from './components/layout/Footer'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         </div>
       </div>
 
-      <div className="w-full h-12 bg-ucsg-primary relative z-10" />
+      <Footer />
     </div>
   )
 }

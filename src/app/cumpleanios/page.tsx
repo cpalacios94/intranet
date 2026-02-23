@@ -4,6 +4,7 @@ import HeaderTitle from '../components/ui/HeaderTitle'
 import TopBar from '../components/layout/TopBar'
 import BirthdayMainSection from '../components/birthday/BirthdayMainSection'
 import { WaveBackground } from '../components/layout/WaveBackground'
+import Footer from '../components/layout/Footer'
 import { Birthday } from '../types/birthday'
 
 export const dynamic = 'force-dynamic'
@@ -53,7 +54,7 @@ export default async function BirthdayPage() {
         />
       </div>
 
-      <div className="w-full h-12 bg-ucsg-primary relative z-10" />
+      <Footer />
     </div>
   )
 }

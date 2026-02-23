@@ -5,6 +5,7 @@ import Navbar from '../components/layout/NavBar'
 import HeaderTitle from '../components/ui/HeaderTitle'
 import TopBar from '../components/layout/TopBar'
 import { WaveBackground } from '../components/layout/WaveBackground'
+import Footer from '../components/layout/Footer'
 import NewsMainSection from '../components/news/NewsMainSection'
 import HeroNewsSection from '../components/news/HeroNewsSection'
 import BottomNewsSection from '../components/news/BottomNewsSection'
@@ -48,7 +49,7 @@ export default async function NewsPage() {
         </div>
       </div>
 
-      <div className="w-full h-12 bg-ucsg-primary relative z-10" />
+      <Footer />
     </div>
   )
 }
